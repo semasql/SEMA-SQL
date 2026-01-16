@@ -1,0 +1,183 @@
+name: gas_stations_transactions
+description: A database containing information about gas station transactions, including customer data, gas station details, product information, consumption patterns, and detailed transaction records.
+
+tables:
+  - name: customers
+    description: Contains information about customers
+    columns:
+      - name: CustomerID
+        description: Customer ID - Primary Key
+        data type: INTEGER
+        data description: Identification of the customer
+        data samples: [3, 5, 6]
+
+      - name: Segment
+        description: Customer segment
+        data type: TEXT
+        data description: Client segment
+        data samples: ['SME', 'LAM', 'KAM']
+
+      - name: Currency
+        description: Currency
+        data type: TEXT
+        data description: Currency
+        data samples: ['EUR', 'CZK']
+
+  - name: gasstations
+    description: Contains information about gas stations
+    columns:
+      - name: GasStationID
+        description: Gas Station ID - Primary Key
+        data type: INTEGER
+        data description: Gas Station ID
+        data samples: [44, 45, 46]
+
+      - name: ChainID
+        description: Chain ID
+        data type: INTEGER
+        data description: Chain ID
+        data samples: [13, 6, 23]
+
+      - name: Country
+        description: Country
+        data type: TEXT
+        data description: Country location of the gas station
+        data samples: ['CZE', 'SVK']
+
+      - name: Segment
+        description: Chain segment
+        data type: TEXT
+        data description: Chain segment
+        data samples: ['Value for money', 'Premium', 'Other']
+
+  - name: products
+    description: Contains information about products available at gas stations
+    columns:
+      - name: ProductID
+        description: Product ID - Primary Key
+        data type: INTEGER
+        data description: Product ID
+        data samples: [1, 2, 3]
+
+      - name: Description
+        description: Product description
+        data type: TEXT
+        data description: Description
+        data samples: ['Rucní zadání', 'Nafta', 'Special']
+
+  - name: yearmonth
+    description: Contains monthly consumption data for customers, tracking fuel consumption aggregated by year and month.
+    columns:
+      - name: CustomerID
+        description: Customer ID
+        data type: INTEGER
+        data description: Customer ID
+        data samples: [39, 63, 172]
+
+      - name: Date
+        description: Date - Primary Key
+        data type: TEXT
+        data description: Date in YYYYMM format
+        data samples: ['201112', '201201', '201202']
+
+      - name: Consumption
+        description: Consumption
+        data type: REAL
+        data description: Consumption
+        data samples: [528.3, 1598.28, 1931.36]
+
+  - name: transactions_1k
+    description: Contains detailed transaction records for gas station purchases
+    columns:
+      - name: TransactionID
+        description: Transaction ID - Primary Key
+        data type: INTEGER
+        data description: Transaction ID
+        data samples: [1, 2, 3]
+
+      - name: Date
+        description: Transaction date
+        data type: DATE
+        data description: Date
+        data samples: ['2012-08-24', '2012-08-23', '2012-08-25']
+
+      - name: Time
+        description: Transaction time
+        data type: TEXT
+        data description: Time
+        data samples: ['09:41:00', '10:03:00', '13:53:00']
+
+      - name: CustomerID
+        description: Customer ID
+        data type: INTEGER
+        data description: Customer ID
+        data samples: [31543, 46707, 7654]
+
+      - name: CardID
+        description: Card ID
+        data type: INTEGER
+        data description: Card ID
+        data samples: [486621, 550134, 684220]
+
+      - name: GasStationID
+        description: Gas Station ID
+        data type: INTEGER
+        data description: Gas Station ID
+        data samples: [3704, 656, 741]
+
+      - name: ProductID
+        description: Product ID
+        data type: INTEGER
+        data description: Product ID
+        data samples: [2, 23, 5]
+
+      - name: Amount
+        description: Amount
+        data type: INTEGER
+        data description: Amount (quantity)
+        data samples: [28, 18, 1]
+
+      - name: Price
+        description: Price in CZK
+        data description: Price per unit.
+        data samples: [672.64, 430.72, 121.99]
+
+relationships:
+  - name: customers_to_yearmonth
+    left table: customers
+    right table: yearmonth
+    left column: CustomerID
+    right column: CustomerID
+
+  - name: customers_to_transactions_1k
+    left table: customers
+    right table: transactions_1k
+    left column: CustomerID
+    right column: CustomerID
+
+  - name: gasstations_to_transactions_1k
+    left table: gasstations
+    right table: transactions_1k
+    left column: GasStationID
+    right column: GasStationID
+
+  - name: products_to_transactions_1k
+    left table: products
+    right table: transactions_1k
+    left column: ProductID
+    right column: ProductID
+
+domain notes:
+  - Total transaction cost calculation: Total price = Amount × Price from the transactions_1k table
+
+  - Date format in yearmonth table: YYYYMM format (e.g., '201112' represents December 2011)
+
+  - Customer segments: SME (Small and Medium Enterprises), LAM (Local Account Management), KAM (Key Account Management)
+
+  - Gas station segments: Value for money, Premium, Other - indicating the market positioning of the gas station chain
+
+  - Currency options: EUR (Euro) and CZK (Czech Koruna)
+
+  - Country codes: CZE (Czech Republic), SVK (Slovakia)
+
+  - Consumption in yearmonth table represents aggregated monthly fuel consumption for each customer

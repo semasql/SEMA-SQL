@@ -1,0 +1,297 @@
+name: superhero_database
+description: A database containing information about superheroes, including their physical attributes, powers, alignments, and publisher information.
+
+tables:
+  - name: gender
+    description: Contains gender classifications for superheroes.
+    columns:
+      - name: id
+        description: Primary Key - the unique identifier of the gender
+        data type: INTEGER
+        data description: Unique identifier for each gender category
+        data samples: ['1', '2', '3']
+
+      - name: gender
+        description: Gender category
+        data type: TEXT
+        data description: The gender of the superhero
+        data samples: ['Male', 'Female', 'N/A']
+
+  - name: superpower
+    description: Contains the various superpowers that superheroes can possess.
+    columns:
+      - name: id
+        description: Primary Key - the unique identifier of the superpower
+        data type: INTEGER
+        data description: Unique identifier for each superpower
+        data samples: ['1', '2', '3']
+
+      - name: power_name
+        description: Name of the superpower
+        data type: TEXT
+        data description: The superpower name
+        data samples: ['Agility', 'Accelerated Healing', 'Lantern Power Ring']
+
+  - name: publisher
+    description: Contains information about the publishers of superhero comics and media.
+    columns:
+      - name: id
+        description: Primary Key - the unique identifier of the publisher
+        data type: INTEGER
+        data description: Unique identifier for each publisher
+        data samples: ['1', '2', '3']
+
+      - name: publisher_name
+        description: Name of the publisher
+        data type: TEXT
+        data description: The name of the publisher
+        data samples: ['', 'ABC Studios', 'Dark Horse Comics']
+
+  - name: superhero
+    description: Contains comprehensive information about superheroes, including their physical characteristics, identities, and affiliations.
+    columns:
+      - name: id
+        description: Primary Key - the unique identifier of the superhero
+        data type: INTEGER
+        data description: Unique identifier for each superhero
+        data samples: ['1', '2', '3']
+
+      - name: superhero_name
+        description: Superhero alias
+        data type: TEXT
+        data description: The name of the superhero
+        data samples: ['3-D Man', 'A-Bomb', 'Abe Sapien']
+
+      - name: full_name
+        description: Full legal name
+        data type: TEXT
+        data description: The full name of the superhero. The full name of a person typically consists of their given name, also known as their first name or personal name, and their surname, also known as their last name or family name. For example, if someone's given name is "John" and their surname is "Smith," their full name would be "John Smith."
+        data samples: ['Charles Chandler', 'Richard Milhouse Jones', 'Abraham Sapien']
+
+      - name: gender_id
+        description: Gender identifier - Foreign Key
+        data type: INTEGER
+        data description: The id of the superhero's gender. Links to gender(id)
+        data samples: ['1', '2', '3']
+
+      - name: eye_colour_id
+        description: Eye color identifier - Foreign Key
+        data type: INTEGER
+        data description: The id of the superhero's eye color. Links to colour(id)
+        data samples: ['9', '33', '7']
+
+      - name: hair_colour_id
+        description: Hair color identifier - Foreign Key
+        data type: INTEGER
+        data description: The id of the superhero's hair color. Links to colour(id)
+        data samples: ['13', '1', '4']
+
+      - name: skin_colour_id
+        description: Skin color identifier - Foreign Key
+        data type: INTEGER
+        data description: The id of the superhero's skin color. Links to colour(id)
+        data samples: ['1', '7', '23']
+
+      - name: race_id
+        description: Race identifier - Foreign Key
+        data type: INTEGER
+        data description: The id of the superhero's race. Links to race(id)
+        data samples: ['1', '24', '33']
+
+      - name: publisher_id
+        description: Publisher identifier - Foreign Key
+        data type: INTEGER
+        data description: The id of the publisher. Links to publisher(id)
+        data samples: ['13', '3', '4']
+
+      - name: alignment_id
+        description: Alignment identifier - Foreign Key
+        data type: INTEGER
+        data description: The id of the superhero's alignment. Links to alignment(id)
+        data samples: ['1', '2', None]
+
+      - name: height_cm
+        description: Height in centimeters
+        data type: INTEGER
+        data description: The height of the superhero. The unit of height is centimeter. If the height_cm is NULL or 0, it means the height of the superhero is missing.
+        data samples: ['188', '203', '191']
+
+      - name: weight_kg
+        description: Weight in kilograms
+        data type: INTEGER
+        data description: The weight of the superhero. The unit of weight is kilogram. If the weight_kg is NULL or 0, it means the weight of the superhero is missing.
+        data samples: ['90', '441', '65']
+
+  - name: colour
+    description: Contains color classifications for superhero physical characteristics (skin, eyes, hair, etc.).
+    columns:
+      - name: id
+        description: Primary Key - the unique identifier of the color
+        data type: INTEGER
+        data description: Unique identifier for each color
+        data samples: ['1', '2', '3']
+
+      - name: colour
+        description: Color name
+        data type: TEXT
+        data description: The color of the superhero's skin/eye/hair/etc
+        data samples: ['No Colour', 'Amber', 'Auburn']
+
+  - name: attribute
+    description: Contains the different types of attributes that can be measured for superheroes.
+    columns:
+      - name: id
+        description: Primary Key - the unique identifier of the attribute
+        data type: INTEGER
+        data description: Unique identifier for each attribute
+        data samples: ['1', '2', '3']
+
+      - name: attribute_name
+        description: Name of the attribute
+        data type: TEXT
+        data description: The attribute. A superhero's attribute is a characteristic or quality that defines who they are and what they are capable of. This could be a physical trait, such as superhuman strength or the ability to fly, or a personal trait, such as extraordinary intelligence or exceptional bravery.
+        data samples: ['Intelligence', 'Strength', 'Speed']
+
+  - name: hero_power
+    description: Junction table linking superheroes to their superpowers (many-to-many relationship).
+    columns:
+      - name: hero_id
+        description: Superhero identifier - Foreign Key
+        data type: INTEGER
+        data description: The id of the hero. Maps to superhero(id)
+        data samples: ['1', '2', '3']
+
+      - name: power_id
+        description: Superpower identifier - Foreign Key
+        data type: INTEGER
+        data description: The id of the power. Maps to superpower(id). In general, a superhero's attributes provide the foundation for their abilities and help to define who they are, while their powers are the specific abilities that they use to fight crime and protect others.
+        data samples: ['1', '18', '26']
+
+  - name: race
+    description: Contains race and species classifications for superheroes.
+    columns:
+      - name: id
+        description: Primary Key - the unique identifier of the race
+        data type: INTEGER
+        data description: Unique identifier for each race
+        data samples: ['1', '2', '3']
+
+      - name: race
+        description: Race or species name
+        data type: TEXT
+        data description: The race of the superhero. In the context of superheroes, a superhero's race would refer to the particular group of people that the superhero belongs to base on these physical characteristics
+        data samples: ['-', 'Alien', 'Alpha']
+
+  - name: alignment
+    description: Contains moral and ethical alignment classifications for superheroes.
+    columns:
+      - name: id
+        description: Primary Key - the unique identifier of the alignment
+        data type: INTEGER
+        data description: Unique identifier for each alignment
+        data samples: ['1', '2', '3']
+
+      - name: alignment
+        description: Moral alignment category
+        data type: TEXT
+        data description: The alignment of the superhero. 
+        data samples: ['Good', 'Bad', 'Neutral']
+
+  - name: hero_attribute
+    description: Junction table linking superheroes to their attribute values (many-to-many relationship).
+    columns:
+      - name: hero_id
+        description: Superhero identifier - Foreign Key
+        data type: INTEGER
+        data description: The id of the hero. Maps to superhero(id)
+        data samples: ['1', '2', '3']
+
+      - name: attribute_id
+        description: Attribute identifier - Foreign Key
+        data type: INTEGER
+        data description: The id of the attribute. Maps to attribute(id)
+        data samples: ['1', '2', '3']
+
+      - name: attribute_value
+        description: Attribute score
+        data type: INTEGER
+        data description: The attribute value. If a superhero has a higher attribute value on a particular attribute, it means that they are more skilled or powerful in that area compared to other superheroes. For example, if a superhero has a higher attribute value for strength, they may be able to lift heavier objects or deliver more powerful punches than other superheroes.
+        data samples: ['80', '75', '95']
+
+relationships:
+  - name: superhero_to_gender
+    left table: superhero
+    right table: gender
+    left column: gender_id
+    right column: id
+
+  - name: superhero_to_eye_colour
+    left table: superhero
+    right table: colour
+    left column: eye_colour_id
+    right column: id
+
+  - name: superhero_to_hair_colour
+    left table: superhero
+    right table: colour
+    left column: hair_colour_id
+    right column: id
+
+  - name: superhero_to_skin_colour
+    left table: superhero
+    right table: colour
+    left column: skin_colour_id
+    right column: id
+
+  - name: superhero_to_race
+    left table: superhero
+    right table: race
+    left column: race_id
+    right column: id
+
+  - name: superhero_to_publisher
+    left table: superhero
+    right table: publisher
+    left column: publisher_id
+    right column: id
+
+  - name: superhero_to_alignment
+    left table: superhero
+    right table: alignment
+    left column: alignment_id
+    right column: id
+
+  - name: hero_power_to_superhero
+    left table: hero_power
+    right table: superhero
+    left column: hero_id
+    right column: id
+
+  - name: hero_power_to_superpower
+    left table: hero_power
+    right table: superpower
+    left column: power_id
+    right column: id
+
+  - name: hero_attribute_to_superhero
+    left table: hero_attribute
+    right table: superhero
+    left column: hero_id
+    right column: id
+
+  - name: hero_attribute_to_attribute
+    left table: hero_attribute
+    right table: attribute
+    left column: attribute_id
+    right column: id
+
+domain notes:
+  - Attributes provide the foundation for abilities and define who superheroes are, while powers are specific abilities used to fight crime and protect others
+
+  - Missing height or weight is indicated by NULL or 0 values
+
+  - Full names follow standard Western naming conventions with given name (first name) followed by surname (last name)
+
+  - Alignments categorize superheroes as Good (kind, selfless, justice-oriented), Neutral (self-interested, personal moral code), or Bad (selfish, manipulative, harmful)
+
+  - Higher attribute values indicate greater skill or power in that particular area compared to other superheroes

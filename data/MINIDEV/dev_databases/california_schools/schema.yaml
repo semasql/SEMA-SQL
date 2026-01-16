@@ -1,0 +1,583 @@
+name: california_schools
+description: A database containing information about California schools, including school details, SAT scores, and free/reduced price meal program (FRPM) eligibility data.
+
+tables:
+  - name: schools
+    description: Contains comprehensive information about schools in California, including location details, contact information, administrative personnel, school characteristics (charter status, magnet programs, virtual instruction), grade levels served, and institutional classifications.
+    columns:
+      - name: CDSCode
+        description: California Department Schools Code - Primary Key
+        data type: TEXT
+        data description: Unique identifier for each school in California
+        data samples: ['01100170000000', '01100170109835', '01100170112607']
+
+      - name: NCESDist
+        description: National Center for Educational Statistics district identification number
+        data type: TEXT
+        data description: 7-digit NCES school district identification number where the first 2 digits identify the state and the last 5 digits identify the school district
+        data samples: ['0691051', '0600002', '0600003']
+
+      - name: NCESSchool
+        description: NCES school identification number
+        data type: TEXT
+        data description: 5-digit NCES school identification number that combines with NCESDist to form a unique 12-digit ID for each school
+        data samples: [None, '10546', '10947']
+
+      - name: StatusType
+        description: Operational status of the district
+        data type: TEXT
+        data description: Identifies the current status of the district; Active (in operation and providing instructional services), Closed (not in operation), Merged (combined with another district), Pending (not yet opened but plans to within 9-12 months)
+        data samples: ['Active', 'Closed', 'Merged']
+
+      - name: County
+        description: County name in California
+        data type: TEXT
+        data description: Name of the county where the school is located
+        data samples: ['Alameda', 'Alpine', 'Amador']
+
+      - name: District
+        description: School district name
+        data type: TEXT
+        data description: Name of the school district
+        data samples: ['Alameda County Office of Education', 'California School for the Blind (State Special Schl)', 'California School for the Deaf-Fremont (State Special Schl)']
+
+      - name: School
+        description: School name
+        data type: TEXT
+        data description: Name of the individual school
+        data samples: [None, 'FAME Public Charter', 'Envision Academy for Arts & Technology']
+
+      - name: Street
+        description: Street address
+        data type: TEXT
+        data description: Physical street address of the school, district, or administrative authority
+        data samples: ['313 West Winton Avenue', '39899 Balentine Drive, Suite 335', '1515 Webster Street']
+
+      - name: StreetAbr
+        description: Abbreviated street address
+        data type: TEXT
+        data description: Abbreviated version of the physical street address. 
+        data samples: ['313 West Winton Ave.', '39899 Balentine Dr., Ste. 335', '1515 Webster St.']
+
+      - name: City
+        description: City name
+        data type: TEXT
+        data description: City where the school is located
+        data samples: ['Hayward', 'Newark', 'Oakland']
+
+      - name: Zip
+        description: Zip code
+        data type: TEXT
+        data description: Postal zip code of the school location
+        data samples: ['94544-1136', '94560-5359', '94612-3355']
+
+      - name: State
+        description: State abbreviation
+        data type: TEXT
+        data description: State identifier for the school location
+        data samples: ['CA', None]
+
+      - name: MailStreet
+        description: Mailing street address
+        data type: TEXT
+        data description: Unabbreviated mailing address of the school. 
+        data samples: ['313 West Winton Avenue', '39899 Balentine Drive, Suite 335', '1515 Webster Street']
+
+      - name: MailStrAbr
+        description: Abbreviated mailing street address
+        data type: TEXT
+        data description: Abbreviated mailing street address of the school. 
+        data samples: ['313 West Winton Ave.', '39899 Balentine Dr., Ste. 335', '1515 Webster St.']
+
+      - name: MailCity
+        description: Mailing city
+        data type: TEXT
+        data description: City associated with the mailing address. 
+        data samples: ['Hayward', 'Newark', 'Oakland']
+
+      - name: MailZip
+        description: Mailing zip code
+        data type: TEXT
+        data description: Zip code associated with the mailing address. Unpopulated cells are filled with Zip data
+        data samples: ['94544-1136', '94560-5359', '94612']
+
+      - name: MailState
+        description: Mailing state
+        data type: TEXT
+        data description: State within the mailing address. Unpopulated cells are filled with State data
+        data samples: ['CA', None]
+
+      - name: Phone
+        description: Phone number
+        data type: TEXT
+        data description: Contact phone number for the school, district, or administrative authority
+        data samples: ['(510) 887-0152', None, '(510) 596-8901']
+
+      - name: Ext
+        description: Phone extension
+        data type: TEXT
+        data description: Phone number extension of the school, district, or administrative authority
+        data samples: [None, '130', '1240']
+
+      - name: Website
+        description: Website URL
+        data type: TEXT
+        data description: Website address of the school, district, or administrative authority
+        data samples: ['www.acoe.org', None, 'www.envisionacademy.org/']
+
+      - name: OpenDate
+        description: School opening date
+        data type: DATE
+        data description: The date when the school opened
+        data samples: [None, '2005-08-29', '2006-08-28']
+
+      - name: ClosedDate
+        description: School closing date
+        data type: DATE
+        data description: The date when the school closed
+        data samples: [None, '2015-07-31', '2015-06-30']
+
+      - name: Charter
+        description: Charter school indicator
+        data type: INTEGER
+        data description: Identifies whether a school is a charter school (1 = charter school, 0 = not a charter school)
+        data samples: [None, 1, 0]
+
+      - name: CharterNum
+        description: Charter school number
+        data type: TEXT
+        data description: 4-digit number assigned to a charter school
+        data samples: [None, '0728', '0811']
+
+      - name: FundingType
+        description: Charter school funding type
+        data type: TEXT
+        data description: Indicates the charter school funding type; Not in CS (California School) funding model, Locally funded, or Directly funded
+        data samples: [None, 'Directly funded', 'Locally funded']
+
+      - name: DOC
+        description: District Ownership Code
+        data type: TEXT
+        data description: Numeric code identifying the category of the Administrative Authority; 00 (County Office of Education), 02 (State Board of Education), 03 (Statewide Benefit Charter), 31 (State Special Schools), 34 (Non-school Location), 52 (Elementary School District), 54 (Unified School District), 56 (High School District), 98 (Regional Occupational Center/Program)
+        data samples: ['00', '31', '34']
+
+      - name: DOCType
+        description: District Ownership Code Type
+        data type: TEXT
+        data description: Text description of the district ownership
+        data samples: ['County Office of Education (COE)', 'State Special Schools', 'Non-School Locations']
+
+      - name: SOC
+        description: School Ownership Code
+        data type: TEXT
+        data description: Numeric code identifying the type of school; 08 (Preschool), 09 (Special Education Schools), 11 (Youth Authority Facilities), 13 (Opportunity Schools), 14 (Juvenile Court Schools), 15 (Other County or District Programs), 31 (State Special Schools), 60 (Elementary School), 61 (Elementary School in 1 School District), 62 (Intermediate/Middle Schools), 63 (Alternative Schools of Choice), 64 (Junior High Schools), 65 (K-12 Schools), 66 (High Schools), 67 (High Schools in 1 School District), 68 (Continuation High Schools), 69 (District Community Day Schools), 70 (Adult Education Centers), 98 (Regional Occupational Center/Program)
+        data samples: [None, '65', '66']
+
+      - name: SOCType
+        description: School Ownership Code Type
+        data type: TEXT
+        data description: Text description of the school's ownership and grade-level classification
+        data samples: [None, 'K-12 Schools (Public)', 'High Schools (Public)']
+
+      - name: EdOpsCode
+        description: Education Option Code
+        synonym: continuation schools, county community schools
+        data type: TEXT
+        data description: Text description of the type of education offered; ALTSOC (Alternative School of Choice), COMM (County Community School), COMMDAY (Community Day School), CON (Continuation School), JUV (Juvenile Court School), OPP (Opportunity School), YTH (Youth Authority School), SSS (State Special School), SPEC (Special Education School), TRAD (Traditional), ROP (Regional Occupational Program), HOMHOS (Home and Hospital), SPECON (District Consortia Special Education School)
+        data samples: [None, 'TRAD', 'JUV']
+
+      - name: EdOpsName
+        description: Educational Option Name
+        data type: TEXT
+        data description: Type of education being offered
+        data samples: [None, 'Traditional', 'Juvenile Court School']
+
+      - name: EILCode
+        description: Educational Instruction Level Code
+        synonym: Adult schools
+        data type: TEXT
+        data description: Institution's type relative to grade range served; A (Adult), ELEM (Elementary), ELEMHIGH (Elementary-High Combination), HS (High School), INTMIDJR (Intermediate/Middle/Junior High), PS (Preschool), UG (Ungraded)
+        data samples: [None, 'ELEMHIGH', 'HS']
+
+      - name: EILName
+        description: Educational Instruction Level Name
+        data type: TEXT
+        data description: Institution's type relative to the grade range served
+        data samples: [None, 'Elementary-High Combination', 'High School']
+
+      - name: GSoffered
+        description: Grade span offered
+        data type: TEXT
+        data description: The lowest and highest grade offered or supported by the school.
+
+      - name: GSserved
+        description: Grade span served
+        data type: TEXT
+        data description: The lowest and highest grade of student enrollment as reported in the most recent certified CALPADS Fall 1 data collection. Only K-12 enrollment is reported. May differ from grade span offered, especially at independent study, alternative education, and special education schools
+        data samples: [None, 'K-12', '9-12']
+
+      - name: Virtual
+        description: Virtual instruction type
+        data type: TEXT
+        data description: Identifies the type of virtual instruction offered; F (Exclusively Virtual - no physical building), V (Primarily Virtual - focuses on virtual instruction with some physical meetings), C (Primarily Classroom - offers virtual courses but not as primary means), N (Not Virtual - no virtual instruction), P (Partial Virtual - retired value replaced with V and C beginning 2016-17)
+        data samples: [None, 'P', 'N']
+
+      - name: Magnet
+        description: Magnet school indicator
+        data type: INTEGER
+        data description: Identifies whether a school is a magnet school or offers a magnet program (1 = magnet school/program, 0 = not magnet). Preschools and adult education centers do not contain a magnet school indicator
+        data samples: [None, 0, 1]
+
+      - name: Latitude
+        description: Latitude coordinate
+        data type: REAL
+        data description: Angular distance in degrees between the location and the equator, measured north to south
+        data samples: [37.658212, 37.521436, 37.80452]
+
+      - name: Longitude
+        description: Longitude coordinate
+        data type: REAL
+        data description: Angular distance in degrees between the location and the prime meridian (Greenwich, England), measured west to east
+        data samples: [-122.09713, -121.99391, -122.26815]
+
+      - name: AdmFName1
+        description: Primary administrator first name
+        data type: TEXT
+        data description: The superintendent's or principal's first name. 
+        data samples: ['L Karen', None, 'Laura']
+
+      - name: AdmLName1
+        description: Primary administrator last name
+        data type: TEXT
+        data description: The superintendent's or principal's last name. 
+        data samples: ['Monroe', None, 'Robell']
+
+      - name: AdmEmail1
+        description: Primary administrator email
+        data type: TEXT
+        data description: The superintendent's or principal's email address.
+        data samples: ['lkmonroe@acoe.org', None, 'laura@envisionacademy.org']
+
+      - name: AdmFName2
+        description: Not useful
+        data type: TEXT
+        data description: Second administrator's first name
+        data samples: [None, 'Sau-Lim (Lance)', 'Jennifer']
+
+      - name: AdmLName2
+        description: Not useful
+        data type: TEXT
+        data description: Second administrator's last name
+        data samples: [None, 'Tsang', 'Koelling']
+
+      - name: AdmEmail2
+        description: Not useful
+        data type: TEXT
+        data description: Second administrator's email address
+        data samples: [None, 'stsang@unityhigh.org', 'jkoelling@efcps.net']
+
+      - name: AdmFName3
+        description: Not useful
+        data type: TEXT
+        data description: Third administrator's first name
+        data samples: [None, 'Drew', 'Irma']
+
+      - name: AdmLName3
+        description: Not useful
+        data type: TEXT
+        data description: Third administrator's last name
+        data samples: [None, 'Sarratore', 'Munoz']
+
+      - name: AdmEmail3
+        description: Not useful
+        data type: TEXT
+        data description: Third administrator's email address
+        data samples: [None, 'dsarratore@vincentacademy.org', 'gmunoz@piedmont.k12.ca.us']
+
+      - name: LastUpdate
+        description: Last update date
+        data type: DATE
+        data description: Date when this record was last updated
+        data samples: ['2015-06-23', '2015-09-01', '2015-06-18']
+
+  - name: satscores
+    description: Contains SAT test score data for California schools, including enrollment numbers, number of test takers, and average scores in Reading, Math, and Writing, as well as counts of high-performing students.
+    columns:
+      - name: cds
+        description: California Department Schools Code - Primary Key
+        data type: TEXT
+        data description: Unique identifier linking to the schools table
+        data samples: ['01100170000000', '01100170109835', '01100170112607']
+
+      - name: rtype
+        description: Not useful
+        data type: TEXT
+        data description: 
+        data samples: ['D', 'S']
+
+      - name: sname
+        description: School name
+        data type: TEXT
+        data description: Name of the school
+        data samples: [None, 'FAME Public Charter', 'Envision Academy for Arts & Technology']
+
+      - name: dname
+        description: District name
+        data type: TEXT
+        data description: Name of the district segment
+        data samples: ['Alameda County Office of Education', 'Alameda Unified', 'Albany City Unified']
+
+      - name: cname
+        description: County names in California
+        data type: TEXT
+        data description: Name of the county
+        data samples: ['Alameda', 'Amador', 'Butte']
+
+      - name: enroll12
+        description: Enrollment for grades 1-12
+        data type: INTEGER
+        data description: Total student enrollment for grades 1 through 12
+        data samples: [398, 62, 75]
+
+      - name: NumTstTakr
+        description: Number of test takers
+        data type: INTEGER
+        data description: Number of students who took the SAT test in this school
+        data samples: [88, 17, 71]
+
+      - name: AvgScrRead
+        description: Average Reading score
+        data type: INTEGER
+        data description: Average SAT score in Reading section
+        data samples: [418, 503, 397]
+
+      - name: AvgScrMath
+        description: Average Math score
+        data type: INTEGER
+        data description: Average SAT score in Math section
+        data samples: [418, 546, 387]
+
+      - name: AvgScrWrite
+        description: Average Writing score
+        data type: INTEGER
+        data description: Average SAT score in Writing section
+        data samples: [417, 505, 395]
+
+      - name: NumGE1500
+        description: Number of test takers with total score >= 1500
+        data type: INTEGER
+        data description: Number of test takers whose total SAT scores are greater than or equal to 1500. 
+        data samples: [14, 9, 5]
+
+  - name: frpm
+    description: Contains Free or Reduced Price Meal (FRPM) program eligibility data for California schools, including enrollment numbers and counts of students eligible for free or reduced-price meals for different grade ranges and age groups.
+    columns:
+      - name: CDSCode
+        description: California Department Schools Code - Primary Key
+        data type: TEXT
+        data description: Unique identifier linking to the schools table
+        data samples: ['01100170109835', '01100170112607', '01100170118489']
+
+      - name: Academic Year
+        description: Academic year
+        data type: TEXT
+        data description: The academic year for which the data applies
+        data samples: ['2014-2015']
+
+      - name: County Code
+        description: County code
+        data type: TEXT
+        data description: Numeric code identifying the county
+        data samples: ['01', '02', '03']
+
+      - name: District Code
+        description: District code
+        data type: INTEGER
+        data description: Numeric code identifying the district
+        data samples: [10017, 31609, 31617]
+
+      - name: School Code
+        description: School code
+        data type: TEXT
+        data description: Numeric code identifying the school
+        data samples: ['0109835', '0112607', '0118489']
+
+      - name: County Name
+        description: County name
+        data type: TEXT
+        data description: Name of the county
+        data samples: ['Alameda', 'Alpine', 'Amador']
+
+      - name: District Name
+        description: District name
+        data type: TEXT
+        data description: Name of the school district
+        data samples: ['Alameda County Office of Education', 'California School for the Blind (State Special Schl)', 'California School for the Deaf-Fremont (State Special Schl)']
+
+      - name: School Name
+        description: School name
+        data type: TEXT
+        data description: Name of the school
+        data samples: ['FAME Public Charter', 'Envision Academy for Arts & Technology', 'Aspire California College Preparatory Academy']
+
+      - name: District Type
+        description: District type
+        data type: TEXT
+        data description: Classification of the district type
+        data samples: ['County Office of Education (COE)', 'State Special Schools', 'Unified School District']
+
+      - name: School Type
+        description: School type
+        data type: TEXT
+        data description: Classification of the school type
+        data samples: ['K-12 Schools (Public)', 'High Schools (Public)', 'Elementary Schools (Public)']
+
+      - name: Educational Option Type
+        description: Educational option type
+        data type: TEXT
+        data description: Type of educational program offered
+        data samples: ['Traditional', 'Juvenile Court School', 'County Community School']
+
+      - name: NSLP Provision Status
+        description: National School Lunch Program provision status
+        data type: TEXT
+        data description: Status of the school's participation in NSLP provisions
+        data samples: [None, 'Breakfast Provision 2', 'Provision 2']
+
+      - name: Charter School (Y/N)
+        description: Charter school indicator
+        data type: INTEGER
+        data description: Indicates if the school is a charter school (1 = Yes, 0 = No)
+        data samples: [1, 0, None]
+
+      - name: Charter School Number
+        description: Charter school number
+        data type: TEXT
+        data description: Unique number assigned to charter schools
+        data samples: ['0728', '0811', '1049']
+
+      - name: Charter Funding Type
+        description: Charter funding type
+        data type: TEXT
+        data description: Type of funding for charter schools
+        data samples: ['Directly funded', None, 'Locally funded']
+
+      - name: IRC
+        description: IRC code
+        data type: INTEGER
+        data description: Not useful according to source documentation
+        data samples: [1, 0, None]
+
+      - name: Low Grade
+        description: Lowest grade level
+        data type: TEXT
+        data description: Lowest grade level served by the school
+        data samples: ['K', '9', '1']
+
+      - name: High Grade
+        description: Highest grade level
+        data type: TEXT
+        data description: Highest grade level served by the school
+        data samples: ['12', '8', '5']
+
+      - name: Enrollment (K-12)
+        description: K-12 enrollment
+        data type: REAL
+        data description: Total student enrollment for grades 1 through 12
+        data samples: [1087.0, 395.0, 244.0]
+
+      - name: Free Meal Count (K-12)
+        description: K-12 free meal count
+        data type: REAL
+        data description: Number of students eligible for free meals in grades K-12. Eligible free rate = Free Meal Count / Enrollment
+        data samples: [565.0, 186.0, 134.0]
+
+      - name: Percent (%) Eligible Free (K-12)
+        description: K-12 percent eligible for free meals
+        data type: REAL
+        data description: Decimal between 0-1
+        data samples: [0.519779208831647, 0.470886075949367, 0.549180327868853]
+
+      - name: FRPM Count (K-12)
+        description: K-12 FRPM count
+        data type: REAL
+        data description: Number of students eligible for Free or Reduced Price Meals in grades K-12. Eligible FRPM rate = FRPM Count / Enrollment
+        data samples: [715.0, 186.0, 175.0]
+
+      - name: Percent (%) Eligible FRPM (K-12)
+        description: K-12 percent eligible for FRPM
+        data type: REAL
+        data description: Decimal between 0-1
+        data samples: [0.657773689052438, 0.470886075949367, 0.717213114754098]
+
+      - name: Enrollment (Ages 5-17)
+        description: Enrollment for ages 5-17
+        data type: REAL
+        data description: Total student enrollment for ages 5 through 17
+        data samples: [1070.0, 376.0, 230.0]
+
+      - name: Free Meal Count (Ages 5-17)
+        description: Ages 5-17 free meal count
+        data type: REAL
+        data description: Number of students ages 5-17 eligible for free meals. Eligible free rate = Free Meal Count / Enrollment
+        data samples: [553.0, 182.0, 128.0]
+
+      - name: Percent (%) Eligible Free (Ages 5-17)
+        description: Ages 5-17 percent eligible for free meals
+        data type: REAL
+        data description: Decimal between 0-1
+        data samples: [0.516822429906542, 0.484042553191489, 0.556521739130435]
+
+      - name: FRPM Count (Ages 5-17)
+        description: Ages 5-17 FRPM count
+        data type: REAL
+        data description: Number of students ages 5-17 eligible for Free or Reduced Price Meals
+        data samples: [702.0, 182.0, 168.0]
+
+      - name: Percent (%) Eligible FRPM (Ages 5-17)
+        description: Ages 5-17 percent eligible for FRPM
+        data type: REAL
+        data description: Decimal between 0-1
+        data samples: [0.65607476635514, 0.484042553191489, 0.730434782608696]
+
+      - name: 2013-14 CALPADS Fall 1 Certification Status
+        description: CALPADS certification status
+        data type: INTEGER
+        data description: Certification status for the 2013-14 CALPADS Fall 1 data collection
+        data samples: [1]
+
+relationships:
+  - name: schools_to_satscores
+    left table: schools
+    right table: satscores
+    left column: CDSCode
+    right column: cds
+
+  - name: schools_to_frpm
+    left table: schools
+    right table: frpm
+    left column: CDSCode
+    right column: CDSCode
+
+  - name: frpm_to_satscores
+    left table: frpm
+    right table: satscores
+    left column: CDSCode
+    right column: cds
+
+domain notes:
+  - Excellence Rate can be calculated as NumGE1500 / NumTstTakr from the satscores table
+
+  - Enrollment (K-12) from the frpm table refers to students in grades 1 through 12 
+
+  - eligible free rate = Free Meal Count / Enrollment from the frpm table
+  
+  - eligible FRPM rate = FRPM / Enrollment from the frpm table
+
+  - GSoffered may differ from GSserved in the schools table. GSoffered represents the grades the school is designed to serve, while GSserved represents actual student enrollment grades reported in CALPADS. Special programs at independent study, alternative education, and special education schools often exceed typical grade spans
+
+  - Virtual instruction separates students and teachers by time/location with interaction via computers and telecommunications. Schools are classified as Exclusively Virtual (F), Primarily Virtual (V), Primarily Classroom (C), Not Virtual (N), or Partial Virtual (P - retired value)
+
+  - In the US: higher longitude values (closer to 0) = further east
+  
+  - Lower absolute latitude values = closer to equator

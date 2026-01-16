@@ -1,0 +1,41 @@
+﻿Query ID,DB used,Query,answer
+1001,formula_1,List drivers' names who are born after 1994/01/01 and have been raced in their hometown country in 2015.,"[['Daniil', 'Kvyat'], ['Max', 'Verstappen'], ['Carlos', 'Sainz']]"
+1002,formula_1,How many constructor participated in 2015 Formula 1 world championship has a circuit in its location country?,10
+1003,codebase_community,"Of the 10 most viewed posts, how many have titles that are closely related to any of the 3 most frequently used tag names?",6
+1004,codebase_community,"Among top 10 popular posts, list all post ids that are relavant to contents of top 10 highest scored comments.","[[31], [8071], [35123], [206]]"
+1005,codebase_community,"Among Top 5 highest scored comments, identify those whose text contains a phrase similar to any 'M' started tag name. List comment ids.","[[11575], [167835], [1915], [175302], [182858]]"
+1006,codebase_community,"Among top 20 highest scored posts, How many of them have display content that are similar to Top 10 badge name in descending alphabetic order.",17
+1007,european_football_2,Which league's names are similar to a country name？,"[['Belgium Jupiler League'], ['England Premier League'], ['France Ligue 1'], ['Germany 1. Bundesliga'], ['Italy Serie A'], ['Netherlands Eredivisie'], ['Poland Ekstraklasa'], ['Portugal Liga ZON Sagres'], ['Scotland Premier League'], ['Spain LIGA BBVA'], ['Switzerland Super League']]"
+1008,european_football_2,"Among top 10 teams in alphabetical order of their name, Identify those whose names closely resemble any country name. For each, list the team name alongside the most similar country name.","[['1. FC Nürnberg', 'Germany'], ['1. FSV Mainz 05', 'Germany'], ['AC Arles-Avignon', 'France'], ['ADO Den Haag', 'Netherlands']]"
+1009,superhero,"Among top 5 superheros in alphabetical order of their name, Find those whose name are colsely relevant to any superpower.","[['3-D Man'], ['A-Bomb'], ['Abe Sapien'], ['Abin Sur']]"
+1010,superhero,How many superheroes have attribute names that are closely relate to any superpowers?,652
+1011,formula_1,Count all circuits which held a Grand Prix in 2016 by their continent.,"[['asia', 7], ['europe', 9], ['north america', 3], ['south america', 1]]"
+1012,formula_1,List all Gen-Z drivers names who competed in 2016 Grand Prix events held in Asia.,Max Verstappen
+1013,formula_1,Count drivers by home continent who competed in Grand Prix races after the year of Beijing Summer Olympics.,"[['asia', 6], ['europe', 45], ['north america', 4], ['oceania', 2], ['south america', 7]]"
+1014,formula_1,Summarize the characteristics of circuits that hosted a Grand Prix after the end of Barack Obama's second presidency and are located in a coastal city.,- The summary of circuits locating in ['Monte-Carlo' 'Shanghai' 'Suzuka' 'Abu Dhabi' 'Sochi' 'Baku']
+1015,superhero,How many male superhero from Marvel Comics has a superpower related to healing/recovery?,81
+1016,european_football_2,How many summer matches held in a inland country?,289
+1017,european_football_2,List players who are good at attacking and are born during Vietnam war.,"[('Alessandro Del Piero',), ('Bart Goor',), ('Kevin Phillips',), ('Neves Soares Hermes',), ('Ze Roberto',)]"
+1018,superhero,What is the name of the superhero that have grey eyes and is from Marvel Comics and can travel across time.,"[('Doctor Strange',)]"
+1019,superhero,What is the total number of unique superpowers possessed by superheroes who have an Asian like color appearance?,"[(152,)]"
+1020,california_schools,"Among the schools with the top 10 highest average total SAT scores, which ones are named using a human name.","['Whitney (Gretchen) High', 'Henry M. Gunn High']"
+1021,california_schools,How many schools have been opened for more than 100 years and located in a county with population over 2 million?,5
+1022,formula_1,What is the name of the driver who was over 42 years old at that time and participated in the Singapore Grand Prix races?,"['Michael', 'Schumacher']"
+1023,formula_1,"Which drivers who finished on the podium in the 2009 European Grand Prix were over 25 years old at the time, and came from countries that have produced F1 world champions? Please list their full names and podium positions.","[('Rubens', 'Barrichello', 1), ('Kimi', 'Räikkönen', 3)]"
+1024,california_schools,"Which charter schools in Southern California also offer a magnet program, and what is their SAT excellence rate, rounded to three decimal places?","[['Grover Cleveland Charter High', 0.502], ['Sylmar Charter High', 0.116], ['Palisades Charter High', 0.580]]"
+1025,formula_1,What was Lewis Hamilton's average lap time in the 2016 season at different circuits in Asia where he won the race?,"['UAE', 106982.055]"
+1026,formula_1,"For each Indian driver, show their total points, the points they earned from races they won, and the points they earned from races they didn't win. Include the driver's name in the results.","[('Narain', 'Karthikeyan', 5.0, 0, 5.0), ('Karun', 'Chandhok', 0.0, 0, 0.0)]"
+1027,california_schools,"Investigate whether the prevalence of virtual instruction affects SAT scores. Specifically, analyze the relationship between different types of virtual instruction offered by schools and the average SAT scores in Reading, Math, and Writing. Round the scores to two decimal places.","[['F', 520.25, 484.75, 498.25], ['N', 472.56, 477.43, 466.22], ['P', 483.42, 489.9, 476.36]]"
+1028,california_schools,"What are the average SAT scores for students in low-income areas and high-income areas, respectively?","[['High-Income', 469.91, 460.99, 459.57], ['Low-Income', 489.33, 486.45, 476.36]]"
+1029,formula_1,"In the 2016 British Grand Prix, what percentage of all participants started outside the top 10 grid positions and finished the race with points, rounded to two decimal places?",9.09
+1030,california_schools,How many schools have average total SAT scores reach or exceed the passing threshold which is 60% of the new official total score of SAT?,1670
+1031,formula_1,Describe Lewis Hamilton's performance in the 2014 and 2016 season respectively.,-
+1032,codebase_community,Extract technical terms in comment text for each comment with a score higher than 30.,"[['Absence of evidence, proof of absence, magnetic monopoles'], ['distinct subsets'], ['probability']]"
+1033,codebase_community,Add addtional information to illustrate technical terms as supplementary material for the post contents of user rcs.,-
+1034,codebase_community,"For each comment with score higher than 40, deduce its content as Positive (agreement), Negative (disagreement), or Neutral.","[['Negative'], ['Negative'], ['Positive']]"
+1035,codebase_community,Give a more creative version of the top 3 popular badges.,"[['Student', 'Knowledge Seeker'], ['Supporter', 'Champion Ally'], ['Editor', 'Editorial Alchemist']]"
+1036,codebase_community,"Extract contact details (Twitter, website, email, etc.) from the last 3 user's AboutMe sorted by alphabet order only if the user's AboutMe contains contact details.",['pleasureoffiguring@gmail.com']
+1037,european_football_2,"For teams participated in spanish league during season 2015/2016, identify whether each team name includes a city name as part of it, and count how many teams fall into each category (TRUE/FALSE).","[['FALSE', 5], ['TRUE', 15]]"
+1038,formula_1,Describe the family background of the driver who serves in the same team with Lewis Hamilton in 2016.,"""Family background of Nico Rosberg: xxx"""
+1039,california_schools,Synthesize a standard mail address of the school with the highest average total SAT score.,"""41717 Palm Ave., Fremont, CA 94539-4799"""
+1040,european_football_2,"Amony top 5 highest players, identify which country the name most likely originates from.","[['Kristof van Hout', 'Belgium'], ['Bogdan Milic', 'Montenegro'], ['Costel Pantilimon', 'Romania'], ['Fejsal Mulic', 'Serbia'], ['Jurgen Wevers', 'Netherlands']]"

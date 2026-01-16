@@ -1,0 +1,35 @@
+The following schema outlines the table names and their respective columns. Each column is detailed in this order: column_name, is_PrimaryKey, data_type, column_description, value_description, and value_example. 
+
+
+Table: customers
+CustomerID,Primary Key,INTEGER,identification of the customer,,"[3, 5, 6]"
+Segment,,TEXT,client segment,,"['SME', 'LAM', 'KAM']"
+Currency,,TEXT,Currency,,"['EUR', 'CZK']"
+
+Table: gasstations
+GasStationID,Primary Key,INTEGER,Gas Station ID,,"[44, 45, 46]"
+ChainID,,INTEGER,Chain ID,,"[13, 6, 23]"
+Country,,TEXT,,,"['CZE', 'SVK']"
+Segment,,TEXT,chain segment,,"['Value for money', 'Premium', 'Other']"
+
+Table: products
+ProductID,Primary Key,INTEGER,Product ID,,"[1, 2, 3]"
+Description,,TEXT,Description,,"['Rucní zadání', 'Nafta', 'Special']"
+
+Table: yearmonth
+CustomerID,,INTEGER,Customer ID,,"[39, 63, 172]"
+Date,Primary Key,TEXT,Date,,"['201112', '201201', '201202']"
+Consumption,,REAL,consumption,,"[528.3, 1598.28, 1931.36]"
+
+Table: transactions_1k
+TransactionID,Primary Key,INTEGER,Transaction ID,,"[1, 2, 3]"
+Date,,DATE,Date,,"['2012-08-24', '2012-08-23', '2012-08-25']"
+Time,,TEXT,Time,,"['09:41:00', '10:03:00', '13:53:00']"
+CustomerID,,INTEGER,Customer ID,,"[31543, 46707, 7654]"
+CardID,,INTEGER,Card ID,,"[486621, 550134, 684220]"
+GasStationID,,INTEGER,Gas Station ID,,"[3704, 656, 741]"
+ProductID,,INTEGER,Product ID,,"[2, 23, 5]"
+Amount,,INTEGER,Amount,,"[28, 18, 1]"
+Price,,REAL,Price,"commonsense evidence:
+
+total price = Amount x Price","[672.64, 430.72, 121.99]"

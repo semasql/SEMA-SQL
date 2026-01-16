@@ -1,0 +1,38 @@
+# Cost per row for each operator type
+cost_per_row:
+  # Standard relational operators (low cost)
+  selection: 0.001
+  projection: 0.001
+  join: 0.002  # Base cost coefficient for join operations
+  topk: 0.005
+  aggregation: 0.002
+  
+  # LLM-enhanced operators (1000-10000x more expensive)
+  selection_udf: 10.0
+  projection_udf: 10.0
+  join_udf: 15.0
+  topk_udf: 12.0
+  aggregation_udf: 8.0
+  
+  table_scan: 0.0005
+
+# Selectivity estimates (fraction of rows passing through)
+selectivity:
+  selection: 0.3
+  projection: 1.0
+  join: 0.5
+  topk: 0.1
+  aggregation: 0.1
+  
+  selection_udf: 0.3
+  projection_udf: 1.0
+  join_udf: 0.5
+  topk_udf: 0.1
+  aggregation_udf: 0.1
+
+# Join cost factors
+# These factors multiply the base join cost coefficient (0.002) to adjust for different join algorithms
+join_cost:
+  hash_join_factor: 1.0  # Multiplier for hash join: cost = 0.002 * (|L| + |R|) * hash_join_factor
+  nested_loop_factor: 1.0  # Multiplier for nested loop join: cost = 0.002 * (|L| * |R|) * nested_loop_factor (currently unused)
+  smart_batch_efficiency: 0.1  # Efficiency factor for UDF join with smart batching: cost = 15.0 * (|L| * |R|) * smart_batch_efficiency

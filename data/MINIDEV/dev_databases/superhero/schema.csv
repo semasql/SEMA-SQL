@@ -1,0 +1,68 @@
+The following schema from the superhero database outlines the table names and their respective columns. Each column is detailed in this order: column_name, is_PrimaryKey, data_type, column_description, value_description, and value_example. 
+
+
+Table: gender
+id,Primary Key,INTEGER,the unique identifier of the gender,,"[1, 2, 3]"
+gender,,TEXT,the gender of the superhero,,"['Male', 'Female', 'N/A']"
+
+Table: superpower
+id,Primary Key,INTEGER,the unique identifier of the superpower,,"[1, 2, 3]"
+power_name,,TEXT,the superpower name,,"['Agility', 'Accelerated Healing', 'Lantern Power Ring']"
+
+Table: publisher
+id,Primary Key,INTEGER,the unique identifier of the publisher,,"[1, 2, 3]"
+publisher_name,,TEXT,the name of the publisher,,"['', 'ABC Studios', 'Dark Horse Comics']"
+
+Table: superhero
+id,Primary Key,INTEGER,the unique identifier of the superhero,,"[1, 2, 3]"
+superhero_name,,TEXT,the name of the superhero,,"['3-D Man', 'A-Bomb', 'Abe Sapien']"
+full_name,,TEXT,the full name of the superhero,"commonsense evidence:
+The full name of a person typically consists of their given name, also known as their first name or personal name, and their surname, also known as their last name or family name. For example, if someone's given name is ""John"" and their surname is ""Smith,"" their full name would be ""John Smith.""","['Charles Chandler', 'Richard Milhouse Jones', 'Abraham Sapien']"
+gender_id,,INTEGER,the id of the superhero's gender,,"[1, 2, 3]"
+eye_colour_id,,INTEGER,the id of the superhero's eye color,,"[9, 33, 7]"
+hair_colour_id,,INTEGER,the id of the superhero's hair color,,"[13, 1, 4]"
+skin_colour_id,,INTEGER,the id of the superhero's skin color,,"[1, 7, 23]"
+race_id,,INTEGER,the id of the superhero's race,,"[1, 24, 33]"
+publisher_id,,INTEGER,the id of the publisher,,"[13, 3, 4]"
+alignment_id,,INTEGER,the id of the superhero's alignment,,"[1, 2, None]"
+height_cm,,INTEGER,the height of the superhero,"commonsense evidence:
+The unit of height is centimeter. If the height_cm is NULL or 0, it means the height of the superhero is missing. ","[188, 203, 191]"
+weight_kg,,INTEGER,the weight of the superhero,"commonsense evidence:
+The unit of weight is kilogram. If the weight_kg is NULL or 0, it means the weight of the superhero is missing.","[90, 441, 65]"
+
+Table: colour
+id,Primary Key,INTEGER,the unique identifier of the color,,"[1, 2, 3]"
+colour,,TEXT,the color of the superhero's skin/eye/hair/etc,,"['No Colour', 'Amber', 'Auburn']"
+
+Table: attribute
+id,Primary Key,INTEGER,the unique identifier of the attribute,,"[1, 2, 3]"
+attribute_name,,TEXT,the attribute,"commonsense evidence:
+A superhero's attribute is a characteristic or quality that defines who they are and what they are capable of. This could be a physical trait, such as superhuman strength or the ability to fly, or a personal trait, such as extraordinary intelligence or exceptional bravery. ","['Intelligence', 'Strength', 'Speed']"
+
+Table: hero_power
+hero_id,,INTEGER,"the id of the hero
+Maps to superhero(id)",,"[1, 2, 3]"
+power_id,,INTEGER,"the id of the power
+Maps to superpower(id)","commonsense evidence:
+In general, a superhero's attributes provide the foundation for their abilities and help to define who they are, while their powers are the specific abilities that they use to fight crime and protect others.","[1, 18, 26]"
+
+Table: race
+id,Primary Key,INTEGER,the unique identifier of the race,,"[1, 2, 3]"
+race,,TEXT,the race of the superhero,"commonsense evidence:
+In the context of superheroes, a superhero's race would refer to the particular group of people that the superhero belongs to base on these physical characteristics","['-', 'Alien', 'Alpha']"
+
+Table: alignment
+id,Primary Key,INTEGER,the unique identifier of the alignment,,"[1, 2, 3]"
+alignment,,TEXT,the alignment of the superhero,"commonsense evidence:
+Alignment refers to a character's moral and ethical stance and can be used to describe the overall attitude or behavior of a superhero. Some common alignments for superheroes include:
+Good: These superheroes are typically kind, selfless, and dedicated to protecting others and upholding justice. Examples of good alignments include Superman, Wonder Woman, and Spider-Man.
+Neutral: These superheroes may not always prioritize the greater good, but they are not necessarily evil either. They may act in their own self-interest or make decisions based on their own moral code. Examples of neutral alignments include the Hulk and Deadpool.
+	Bad: These superheroes are typically selfish, manipulative, and willing to harm others in pursuit of their own goals. Examples of evil alignments include Lex Luthor and the Joker.","['Good', 'Bad', 'Neutral']"
+
+Table: hero_attribute
+hero_id,,INTEGER,"the id of the hero
+Maps to superhero(id)",,"[1, 2, 3]"
+attribute_id,,INTEGER,"the id of the attribute
+Maps to attribute(id)",,"[1, 2, 3]"
+attribute_value,,INTEGER,the attribute value,"commonsense evidence:
+If a superhero has a higher attribute value on a particular attribute, it means that they are more skilled or powerful in that area compared to other superheroes. For example, if a superhero has a higher attribute value for strength, they may be able to lift heavier objects or deliver more powerful punches than other superheroes.","[80, 75, 95]"

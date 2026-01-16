@@ -1,0 +1,98 @@
+The following schema from the codebase_community database outlines the table names and their respective columns. Each column is detailed in this order: column_name, is_PrimaryKey, data_type, column_description, value_description, and value_example. 
+
+
+Table: postLinks
+Id,Primary Key,INTEGER,the post link id,,"[108, 145, 217]"
+CreationDate,,DATETIME,the creation date of the post link,,"['2010-07-21 14:47:33.0', '2010-07-23 16:30:41.0', '2010-07-26 20:12:15.0']"
+PostId,,INTEGER,the post id,,"[395, 548, 375]"
+RelatedPostId,,INTEGER,the id of the related post,,"[173, 539, 30]"
+LinkTypeId,,INTEGER,the id of the link type,,"[1, 3]"
+
+Table: postHistory
+Id,Primary Key,INTEGER,the post history id,,"[1, 2, 3]"
+PostHistoryTypeId,,INTEGER,the id of the post history type,,"[2, 1, 3]"
+PostId,,INTEGER,the unique id of the post,,"[1, 2, 3]"
+RevisionGUID,,TEXT,the revision globally unique id of the post,,"['e58bf7fd-e60f-4c58-a6e4-dfc91cf98a69', '18bf9150-f1cb-432d-b7b7-26d2f8e33581', '6320bb0f-c792-4a8c-8083-89507c28d375']"
+CreationDate,,DATETIME,the creation date of the post,,"['2010-07-19 19:12:12.0', '2010-07-19 19:12:57.0', '2010-07-19 19:13:28.0']"
+UserId,,INTEGER,the user who post the post,,"[8, 24, 18]"
+Text,,TEXT,the detailed content of the post,,"['How should I elicit prior distributions from experts when fitting a Bayesian model?', 'Eliciting priors from experts', '<bayesian><prior><elicitation>']"
+Comment,,TEXT,comments of the post,,"['', 'edited tags', 'add content from the comments;']"
+UserDisplayName,,TEXT,user's display name,,"['', 'user28', 'user209']"
+
+Table: badges
+Id,Primary Key,INTEGER,the badge id,,"[1, 2, 3]"
+UserId,,INTEGER,the unique id of the user,,"[5, 6, 8]"
+Name,,TEXT,the badge name the user obtained,,"['Teacher', 'Student', 'Editor']"
+Date,,DATETIME,the date that the user obtained the badge,,"['2010-07-19 19:39:07.0', '2010-07-19 19:39:08.0', '2010-07-19 19:39:09.0']"
+
+Table: posts
+Id,Primary Key,INTEGER,the post id,,"[1, 2, 3]"
+PostTypeId,,INTEGER,the id of the post type,,"[1, 2, 7]"
+AcceptedAnswerId,,INTEGER,the accepted answer id of the post ,,"[15, 59, 5]"
+CreaionDate,,DATETIME,the creation date of the post,,"['2010-07-19 19:12:12.0', '2010-07-19 19:12:57.0', '2010-07-19 19:13:28.0']"
+Score,,INTEGER,the score of the post,,"[23, 22, 54]"
+ViewCount,,INTEGER,the view count of the post,"commonsense evidence:
+Higher view count means the post has higher popularity","[1278, 8198, 3613]"
+Body,,TEXT,the body of the post,,"['<p>How should I elicit prior distributions from experts when fitting a Bayesian model?</p>\n', '<p>In many different statistical methods there is an ""assumption of normality"".  What is ""normality"" and how do I know if there is normality?</p>\n', '<p>What are some valuable Statistical Analysis open source projects available right now?</p>\n\n<p>Edit: as pointed out by Sharpie, valuable could mean helping you get things done faster or more cheaply.</p>\n']"
+OwnerUserId,,INTEGER,the id of the owner user,,"[8, 24, 18]"
+LasActivityDate,,DATETIME,the last activity date,,"['2010-09-15 21:08:26.0', '2012-11-12 09:21:54.0', '2013-05-27 14:48:36.0']"
+Title,,TEXT,the title of the post,,"['Eliciting priors from experts', 'What is normality?', 'What are some valuable Statistical Analysis open source projects?']"
+Tags,,TEXT,the tag of the post,,"['<bayesian><prior><elicitation>', '<distributions><normality>', '<software><open-source>']"
+AnswerCount,,INTEGER,the total number of answers of the post,,"[5, 7, 19]"
+CommentCount,,INTEGER,the total number of comments of the post,,"[1, 4, 2]"
+FavoriteCount,,INTEGER,the total number of favorites of the post,"commonsense evidence:
+more favorite count refers to more valuable posts. ","[14, 8, 36]"
+LastEditorUserId,,INTEGER,the id of the last editor,,"[None, 88, 183]"
+LastEditDate,,DATETIME,the last edit date,,"[None, '2010-08-07 17:56:44.0', '2011-02-12 05:50:03.0']"
+CommunityOwnedDate,,DATETIME,the community owned date,,"[None, '2010-07-19 19:13:28.0', '2010-07-19 19:14:43.0']"
+ParentId,,INTEGER,the id of the parent post,"commonsense evidence:
+If the parent id is null, the post is the root post. Otherwise, the post is the child post of other post. ","[None, 3, 7]"
+ClosedDate,,DATETIME,the closed date of the post,"commonsense evidence:
+if ClosedDate is null or empty, it means this post is not well-finished
+if CloseDate is not null or empty, it means this post has well-finished.","[None, '2010-07-19 20:19:46.0', '2010-08-05 13:06:12.0']"
+OwnerDisplayName,,TEXT,the display name of the post owner,,"[None, 'user28', 'user209']"
+LastEditorDisplayName,,TEXT,the display name of the last editor,,"[None, 'user28', 'user10525']"
+
+Table: users
+Id,Primary Key,INTEGER,the user id,,"[-1, 2, 3]"
+Reputation,,INTEGER,the user's reputation,"commonsense evidence:
+The user with higher reputation has more influence. ","[1, 101, 6792]"
+CreationDate,,DATETIME,the creation date of the user account,,"['2010-07-19 06:55:26.0', '2010-07-19 14:01:36.0', '2010-07-19 15:34:50.0']"
+DisplayName,,TEXT,the user's display name,,"['Community', 'Geoff Dalgas', 'Jarrod Dixon']"
+LastAccessDate,,DATETIME,the last access date of the user account,,"['2010-07-19 06:55:26.0', '2013-11-12 22:07:23.0', '2014-08-08 06:42:58.0']"
+WebsiteUrl,,TEXT,the website url of the user account,,"['http://meta.stackexchange.com/', 'http://stackoverflow.com', 'http://minesweeperonline.com']"
+Location,,TEXT,user's location,,"['on the server farm', 'Corvallis, OR', 'New York, NY']"
+AboutMe,,TEXT,the self introduction of the user,,"['<p>Hi, I\'m not really a person.</p>\n\n<p>I\'m a background process that helps keep this site clean!</p>\n\n<p>I do things like</p>\n\n<ul>\n<li>Randomly poke old unanswered questions every hour so they get some attention</li>\n<li>Own community questions and answers so nobody gets unnecessary reputation from them</li>\n<li>Own downvotes on spam/evil posts that get permanently deleted</li>\n<li>Own suggested edits from anonymous users</li>\n<li><a href=""http://meta.stackexchange.com/a/92006"">Remove abandoned questions</a></li>\n</ul>\n', '<p>Developer on the StackOverflow team.  Find me on</p>\n\n<p><a href=""http://www.twitter.com/SuperDalgas"" rel=""nofollow"">Twitter</a>\n<br><br>\n<a href=""http://blog.stackoverflow.com/2009/05/welcome-stack-overflow-valued-associate-00003/"">Stack Overflow Valued Associate #00003</a></p>\n', '<p><a href=""http://blog.stackoverflow.com/2009/01/welcome-stack-overflow-valued-associate-00002/"">Developer on the Stack Overflow team</a>.</p>\n\n<p>Was dubbed <strong>SALTY SAILOR</strong> by Jeff Atwood, as filth and flarn would oft-times fly when dealing with a particularly nasty bug!</p>\n\n<ul>\n<li>Twitter me: <a href=""http://twitter.com/jarrod_dixon"" rel=""nofollow"">jarrod_dixon</a></li>\n<li>Email me: jarrod.m.dixon@gmail.com</li>\n</ul>\n']"
+Views,,INTEGER,the number of views ,,"[0, 25, 22]"
+UpVotes,,INTEGER,the number of upvotes,,"[5007, 3, 19]"
+DownVotes,,INTEGER,the number of downvotes,,"[1920, 0, 5]"
+AccountId,,INTEGER,the unique id of the account,,"[-1, 2, 3]"
+Age,,INTEGER,user's age," teenager: 13-18
+ adult: 19-65
+ elder: > 65","[None, 37, 35]"
+ProfileImageUrl,,TEXT,the profile image url,,"[None, 'http://i.stack.imgur.com/d1oHX.jpg', 'http://i.stack.imgur.com/km1pr.jpg']"
+
+Table: tags
+Id,Primary Key,INTEGER,the tag id,,"[1, 2, 3]"
+TagName,,TEXT,the name of the tag,,"['bayesian', 'prior', 'elicitation']"
+Count,,INTEGER,the count of posts that contain this tag,more counts --> this tag is more popular,"[1342, 168, 6]"
+ExcerptPostId,,INTEGER,the excerpt post id of the tag,,"[20258, 62158, None]"
+WikiPostId,,INTEGER,the wiki post id of the tag,,"[20257, 62157, None]"
+
+Table: votes
+Id,Primary Key,INTEGER,the vote id,,"[1, 2, 3]"
+PostId,,INTEGER,the id of the post that is voted,,"[3, 2, 5]"
+VoteTypeId,,INTEGER,the id of the vote type,,"[2, 5, 3]"
+CreationDate,,DATE,the creation date of the vote,,"['2010-07-19', '2010-07-20', '2010-07-21']"
+UserId,,INTEGER,the id of the voter,,"[None, 58, 6]"
+BountyAmount,,INTEGER,the amount of bounty,,"[None, 50, 25]"
+
+Table: comments
+Id,Primary Key,INTEGER,the comment Id,,"[1, 2, 3]"
+PostId,,INTEGER,the unique id of the post,,"[3, 5, 9]"
+Score,,INTEGER,rating score,"commonsense evidence:
+The score is from 0 to 100. The score more than 60 refers that the comment is a positive comment. The score less than 60 refers that the comment is a negative comment. ","[5, 0, 11]"
+Text,,TEXT,the detailed content of the comment,,"[""Could be a poster child fo argumentative and subjective.  At the least, need to define 'valuable'."", ""Yes, R is nice- but WHY is it 'valuable'."", 'Again- why?  How would I convince my boss to use this over, say, Excel.']"
+CreationDate,,DATETIME,the creation date of the comment,,"['2010-07-19 19:15:52.0', '2010-07-19 19:16:14.0', '2010-07-19 19:18:54.0']"
+UserId,,INTEGER,the id of the user who post the comment,,"[13, 37, 5]"
+UserDisplayName,,TEXT,user's display name,,"[None, 'user28', 'Statprof']"

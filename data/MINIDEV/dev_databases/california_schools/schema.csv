@@ -1,0 +1,209 @@
+The following schema from the california_schools database outlines the table names and their respective columns. Each column is detailed in this order: column_name, is_PrimaryKey, data_type, column_description, value_description, and value_example. 
+
+
+Table: schools
+CDSCode,Primary Key,TEXT,CDSCode,,"['01100170000000', '01100170109835', '01100170112607']"
+NCESDist,,TEXT,"This field represents the 7-digit National Center for Educational Statistics (NCES) school district identification number. The first 2 digits identify the state and the last 5 digits identify the school district. Combined, they make a unique 7-digit ID for each school district.",,"['0691051', '0600002', '0600003']"
+NCESSchool,,TEXT,This field represents the 5-digit NCES school identification number. The NCESSchool combined with the NCESDist form a unique 12-digit ID for each school.,,"[None, '10546', '10947']"
+StatusType,,TEXT,This field identifies the status of the district. ,"Definitions of the valid status types are listed below:
+·       Active: The district is in operation and providing instructional services.
+·       Closed: The district is not in operation and no longer providing instructional services.
+·       Merged: The district has combined with another district or districts.
+·       Pending: The district has not opened for operation and instructional services yet, but plans to open within the next 9–12 months.","['Active', 'Closed', 'Merged']"
+County,,TEXT,County name,,"['Alameda', 'Alpine', 'Amador']"
+District,,TEXT,District,,"['Alameda County Office of Education', 'California School for the Blind (State Special Schl)', 'California School for the Deaf-Fremont (State Special Schl)']"
+School,,TEXT,School,,"[None, 'FAME Public Charter', 'Envision Academy for Arts & Technology']"
+Street,,TEXT,Street,,"['313 West Winton Avenue', '39899 Balentine Drive, Suite 335', '1515 Webster Street']"
+StreetAbr,,TEXT,"The abbreviated street address of the school, district, or administrative authority’s physical location.","The abbreviated street address of the school, district, or administrative authority’s physical location. Note: Some records (primarily records of closed or retired schools) may not have data in this field.","['313 West Winton Ave.', '39899 Balentine Dr., Ste. 335', '1515 Webster St.']"
+City,,TEXT,City,,"['Hayward', 'Newark', 'Oakland']"
+Zip,,TEXT,Zip,,"['94544-1136', '94560-5359', '94612-3355']"
+State,,TEXT,State,,"['CA', None]"
+MailStreet,,TEXT,MailStreet,"The unabbreviated mailing address of the school, district, or administrative authority. Note: 1) Some entities (primarily closed or retired schools) may not have data in this field; 2) Many active entities have not provided a mailing street address. For your convenience we have filled the unpopulated MailStreet cells with Street data.","['313 West Winton Avenue', '39899 Balentine Drive, Suite 335', '1515 Webster Street']"
+MailStrAbr,,TEXT,,"the abbreviated mailing street address of the school, district, or administrative authority.Note: Many active entities have not provided a mailing street address. For your convenience we have filled the unpopulated MailStrAbr cells with StreetAbr data.","['313 West Winton Ave.', '39899 Balentine Dr., Ste. 335', '1515 Webster St.']"
+MailCity,,TEXT,,"The city associated with the mailing address of the school, district, or administrative authority. Note: Many entities have not provided a mailing address city. For your convenience we have filled the unpopulated MailCity cells with City data.","['Hayward', 'Newark', 'Oakland']"
+MailZip,,TEXT,,"The zip code associated with the mailing address of the school, district, or administrative authority. Note: Many entities have not provided a mailing address zip code. For your convenience we have filled the unpopulated MailZip cells with Zip data.","['94544-1136', '94560-5359', '94612']"
+MailState,,TEXT,,The state within the mailing address. For your convenience we have filled the unpopulated MailState cells with State data.,"['CA', None]"
+Phone,,TEXT,Phone,,"['(510) 887-0152', None, '(510) 596-8901']"
+Ext,,TEXT,"The phone number extension of the school, district, or administrative authority.","The phone number extension of the school, district, or administrative authority.","[None, '130', '1240']"
+Website,,TEXT,"The website address of the school, district, or administrative authority.","The website address of the school, district, or administrative authority.","['www.acoe.org', None, 'www.envisionacademy.org/']"
+OpenDate,,DATE,The date the school opened.,,"[None, '2005-08-29', '2006-08-28']"
+ClosedDate,,DATE,The date the school closed.,,"[None, '2015-07-31', '2015-06-30']"
+Charter,,INTEGER,This field identifies a charter school. ,"The field is coded as follows:
+
+·       1 = The school is a charter
+
+·       0 = The school is not a charter","[None, 1, 0]"
+CharterNum,,TEXT,"The charter school number,",4-digit number assigned to a charter school.,"[None, '0728', '0811']"
+FundingType,,TEXT,Indicates the charter school funding type,"Values are as follows:
+
+·       Not in CS (California School) funding model
+
+·       Locally funded
+
+·       Directly funded","[None, 'Directly funded', 'Locally funded']"
+DOC,,TEXT,District Ownership Code,"The District Ownership Code (DOC) is the numeric code used to identify the category of the Administrative Authority.
+•       00 - County Office of Education
+•       02 – State Board of Education
+•       03 – Statewide Benefit Charter
+•       31 – State Special Schools
+•       34 – Non-school Location*
+•       52 – Elementary School District
+•       54 – Unified School District
+•       56 – High School District
+•       98 – Regional Occupational Center/Program (ROC/P)
+commonsense evidence:
+*Only the California Education Authority has been included in the non-school location category.","['00', '31', '34']"
+DOCType,,TEXT,The District Ownership Code Type is the text description of the DOC category.,(See text values in DOC field description above),"['County Office of Education (COE)', 'State Special Schools', 'Non-School Locations']"
+SOC,,TEXT,The School Ownership Code is a numeric code used to identify the type of school.,"•      08 - Preschool      
+•       09 – Special Education Schools (Public)
+•      11 – Youth Authority Facilities (CEA)
+•       13 – Opportunity Schools
+•       14 – Juvenile Court Schools
+•       15 – Other County or District Programs
+•       31 – State Special Schools
+•       60 – Elementary School (Public)
+•       61 – Elementary School in 1 School District (Public)
+•       62 – Intermediate/Middle Schools (Public)
+•       63 – Alternative Schools of Choice
+•       64 – Junior High Schools (Public)
+•       65 – K-12 Schools (Public)
+•       66 – High Schools (Public)
+•       67 – High Schools in 1 School District (Public)
+•       68 – Continuation High Schools
+•       69 – District Community Day Schools
+•       70 – Adult Education Centers
+•       98 – Regional Occupational Center/Program (ROC/P)","[None, '65', '66']"
+SOCType,,TEXT,The School Ownership Code Type is the text description of the type of school.,The School Ownership Code Type is the text description of the type of school.,"[None, 'K-12 Schools (Public)', 'High Schools (Public)']"
+EdOpsCode,,TEXT,The Education Option Code is a short text description of the type of education offered.,"
+•      ALTSOC – Alternative School of Choice
+•      COMM – County Community School
+•       COMMDAY – Community Day School
+•       CON – Continuation School
+•       JUV – Juvenile Court School
+•       OPP – Opportunity School
+•       YTH – Youth Authority School
+•       SSS – State Special School
+•       SPEC – Special Education School
+•       TRAD – Traditional
+•       ROP – Regional Occupational Program
+•       HOMHOS – Home and Hospital
+•       SPECON – District Consortia Special Education School","[None, 'TRAD', 'JUV']"
+EdOpsName,,TEXT,Educational Option Name,The Educational Option Name is the long text description of the type of education being offered.,"[None, 'Traditional', 'Juvenile Court School']"
+EILCode,,TEXT,The Educational Instruction Level Code is a short text description of the institution's type relative to the grade range served.,"•       A – Adult
+•       ELEM – Elementary
+•       ELEMHIGH – Elementary-High Combination
+•       HS – High School
+•       INTMIDJR – Intermediate/Middle/Junior High
+•       PS – Preschool
+•       UG – Ungraded","[None, 'ELEMHIGH', 'HS']"
+EILName,,TEXT,The Educational Instruction Level Name is the long text description of the institution’s type relative to the grade range served.,The Educational Instruction Level Name is the long text description of the institution’s type relative to the grade range served.,"[None, 'Elementary-High Combination', 'High School']"
+GSoffered,,TEXT,"The grade span offered is the lowest grade and the highest grade offered or supported by the school, district, or administrative authority. This field might differ from the grade span served as reported in the most recent certified California Longitudinal Pupil Achievement (CALPADS) Fall 1 data collection.","For example XYZ School might display the following data:
+
+GSoffered = P–Adult
+
+GSserved = K–12","[None, 'K-12', '9-12']"
+GSserved,,TEXT,It is the lowest grade and the highest grade of student enrollment as reported in the most recent certified CALPADS Fall 1 data collection. Only K–12 enrollment is reported through CALPADS. This field may differ from the grade span offered.,"commonsense evidence:
+
+1.     Only K–12 enrollment is reported through CALPADS
+
+2.     Note: Special programs at independent study, alternative education, and special education schools will often exceed the typical grade span for schools of that type","[None, 'K-12', '9-12']"
+Virtual,,TEXT,"This field identifies the type of virtual instruction offered by the school. Virtual instruction is instruction in which students and teachers are separated by time and/or location, and interaction occurs via computers and/or telecommunications technologies. ","The field is coded as follows:
+
+·       F = Exclusively Virtual – The school has no physical building where students meet with each other or with teachers, all instruction is virtual.
+
+·       V = Primarily Virtual – The school focuses on a systematic program of virtual instruction but includes some physical meetings among students or with teachers.
+
+·       C = Primarily Classroom – The school offers virtual courses but virtual instruction is not the primary means of instruction.
+
+·       N = Not Virtual – The school does not offer any virtual instruction.
+
+·       P = Partial Virtual – The school offers some, but not all, instruction through virtual instruction. Note: This value was retired and replaced with the Primarily Virtual and Primarily Classroom values beginning with the 2016–17 school year.","[None, 'P', 'N']"
+Magnet,,INTEGER,This field identifies whether a school is a magnet school and/or provides a magnet program. ,"The field is coded as follows:
+
+·       1 = Magnet - The school is a magnet school and/or offers a magnet program.
+
+·       0 = Not Magnet - The school is not a magnet school and/or does not offer a magnet program.
+
+commonsense evidence:
+
+Note: Preschools and adult education centers do not contain a magnet school indicator.","[None, 0, 1]"
+Latitude,,REAL,"The angular distance (expressed in degrees) between the location of the school, district, or administrative authority and the equator measured north to south.","The angular distance (expressed in degrees) between the location of the school, district, or administrative authority and the equator measured north to south.","[37.658212, 37.521436, 37.80452]"
+Longitude,,REAL,"The angular distance (expressed in degrees) between the location of the school, district, or administrative authority and the prime meridian (Greenwich, England) measured from west to east.","The angular distance (expressed in degrees) between the location of the school, district, or administrative authority and the prime meridian (Greenwich, England) measured from west to east.","[-122.09713, -121.99391, -122.26815]"
+AdmFName1,,TEXT,administrator's first name,"The superintendent’s or principal’s first name.
+
+commonsense evidence:
+
+Only active and pending districts and schools will display administrator information, if applicable.","['L Karen', None, 'Laura']"
+AdmLName1,,TEXT,administrator's last name,"The superintendent’s or principal’s last name.
+
+commonsense evidence:
+Only active and pending districts and schools will display administrator information, if applicable.","['Monroe', None, 'Robell']"
+AdmEmail1,,TEXT,administrator's email address,"The superintendent’s or principal’s email address.
+
+commonsense evidence:
+
+Only active and pending districts and schools will display administrator information, if applicable.","['lkmonroe@acoe.org', None, 'laura@envisionacademy.org']"
+AdmFName2,,TEXT,,SAME as 1,"[None, 'Sau-Lim (Lance)', 'Jennifer']"
+AdmLName2,,TEXT,,,"[None, 'Tsang', 'Koelling']"
+AdmEmail2,,TEXT,,,"[None, 'stsang@unityhigh.org', 'jkoelling@efcps.net']"
+AdmFName3,,TEXT,,not useful,"[None, 'Drew', 'Irma']"
+AdmLName3,,TEXT,,not useful,"[None, 'Sarratore', 'Munoz']"
+AdmEmail3,,TEXT,,not useful,"[None, 'dsarratore@vincentacademy.org', 'gmunoz@piedmont.k12.ca.us']"
+LastUpdate,,DATE,,when is this record updated last time,"['2015-06-23', '2015-09-01', '2015-06-18']"
+
+Table: satscores
+cds,Primary Key,TEXT,California Department Schools,,"['01100170000000', '01100170109835', '01100170112607']"
+rtype,,TEXT,rtype,unuseful,"['D', 'S']"
+sname,,TEXT,school name,,"[None, 'FAME Public Charter', 'Envision Academy for Arts & Technology']"
+dname,,TEXT,district segment,,"['Alameda County Office of Education', 'Alameda Unified', 'Albany City Unified']"
+cname,,TEXT,county name,,"['Alameda', 'Amador', 'Butte']"
+enroll12,,INTEGER,enrollment (1st-12nd grade),,"[398, 62, 75]"
+NumTstTakr,,INTEGER,Number of Test Takers in this school,number of test takers in each school,"[88, 17, 71]"
+AvgScrRead,,INTEGER,average scores in Reading,average scores in Reading,"[418, 503, 397]"
+AvgScrMath,,INTEGER,average scores in Math,average scores in Math,"[418, 546, 387]"
+AvgScrWrite,,INTEGER,average scores in writing,average scores in writing,"[417, 505, 395]"
+NumGE1500,,INTEGER,Number of Test Takers Whose Total SAT Scores Are Greater or Equal to 1500,"Number of Test Takers Whose Total SAT Scores Are Greater or Equal to 1500
+
+commonsense evidence:
+
+Excellence Rate = NumGE1500 / NumTstTakr","[14, 9, 5]"
+
+Table: frpm
+CDSCode,Primary Key,TEXT,CDSCode,,"['01100170109835', '01100170112607', '01100170118489']"
+Academic Year,,TEXT,Academic Year,,['2014-2015']
+County Code,,TEXT,County Code,,"['01', '02', '03']"
+District Code,,INTEGER,District Code,,"[10017, 31609, 31617]"
+School Code,,TEXT,School Code,,"['0109835', '0112607', '0118489']"
+County Name,,TEXT,County Name ,,"['Alameda', 'Alpine', 'Amador']"
+District Name,,TEXT,District Name ,,"['Alameda County Office of Education', 'California School for the Blind (State Special Schl)', 'California School for the Deaf-Fremont (State Special Schl)']"
+School Name,,TEXT,School Name , ,"['FAME Public Charter', 'Envision Academy for Arts & Technology', 'Aspire California College Preparatory Academy']"
+District Type,,TEXT,District Type,,"['County Office of Education (COE)', 'State Special Schools', 'Unified School District']"
+School Type,,TEXT,School Type ,,"['K-12 Schools (Public)', 'High Schools (Public)', 'Elementary Schools (Public)']"
+Educational Option Type,,TEXT,Educational Option Type,,"['Traditional', 'Juvenile Court School', 'County Community School']"
+NSLP Provision Status,,TEXT,NSLP Provision Status,,"[None, 'Breakfast Provision 2', 'Provision 2']"
+Charter School (Y/N),,INTEGER,Charter School (Y/N),"0: N;
+1: Y","[1, 0, None]"
+Charter School Number,,TEXT,Charter School Number,,"['0728', '0811', '1049']"
+Charter Funding Type,,TEXT,Charter Funding Type,,"['Directly funded', None, 'Locally funded']"
+IRC,,INTEGER,,Not useful,"[1, 0, None]"
+Low Grade,,TEXT,Low Grade,,"['K', '9', '1']"
+High Grade,,TEXT,High Grade,,"['12', '8', '5']"
+Enrollment (K-12),,REAL,Enrollment (K-12),"commonsense evidence:
+
+K-12: 1st grade - 12nd grade ","[1087.0, 395.0, 244.0]"
+Free Meal Count (K-12),,REAL,Free Meal Count (K-12),"commonsense evidence:
+
+eligible free rate = Free Meal Count / Enrollment","[565.0, 186.0, 134.0]"
+Percent (%) Eligible Free (K-12),,REAL,,,"[0.519779208831647, 0.470886075949367, 0.549180327868853]"
+FRPM Count (K-12),,REAL,Free or Reduced Price Meal Count (K-12),"commonsense evidence:
+
+eligible FRPM rate = FRPM / Enrollment","[715.0, 186.0, 175.0]"
+Percent (%) Eligible FRPM (K-12),,REAL,,,"[0.657773689052438, 0.470886075949367, 0.717213114754098]"
+Enrollment (Ages 5-17),,REAL,Enrollment (Ages 5-17),,"[1070.0, 376.0, 230.0]"
+Free Meal Count (Ages 5-17),,REAL,Free Meal Count (Ages 5-17),"commonsense evidence:
+
+eligible free rate = Free Meal Count / Enrollment","[553.0, 182.0, 128.0]"
+Percent (%) Eligible Free (Ages 5-17),,REAL,,,"[0.516822429906542, 0.484042553191489, 0.556521739130435]"
+FRPM Count (Ages 5-17),,REAL,,,"[702.0, 182.0, 168.0]"
+Percent (%) Eligible FRPM (Ages 5-17),,REAL,,,"[0.65607476635514, 0.484042553191489, 0.730434782608696]"
+2013-14 CALPADS Fall 1 Certification Status,,INTEGER,2013-14 CALPADS Fall 1 Certification Status,,[1]

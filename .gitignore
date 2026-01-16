@@ -1,0 +1,39 @@
+# Python
+*.pyc
+*.pyo
+*.pyd
+__pycache__/
+*.so
+*.egg
+*.egg-info/
+dist/
+build/
+.Python
+
+# Virtual environments
+env/
+venv/
+.venv/
+
+# Type checking
+.mypy_cache
+
+# IDE
+.vscode/
+
+
+# Environment variables
+.env
+.env.local
+.env.production
+.env.staging
+
+# OS
+**/.DS_Store
+
+# Project-specific
+*.sqlite
+
+
+# Git
+.git

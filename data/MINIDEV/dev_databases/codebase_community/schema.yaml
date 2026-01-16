@@ -1,0 +1,558 @@
+name: codebase_community
+description: A database containing information about a Stack Exchange-style community platform, including user data, posts, comments, votes, badges, tags, and post history tracking.
+
+tables:
+  - name: postLinks
+    description: Contains relationships between related posts, tracking how posts are linked together through different link types.
+    columns:
+      - name: Id
+        description: Post Link ID - Primary Key
+        data type: INTEGER
+        data description: The post link id
+        data samples: [108, 145, 217]
+
+      - name: CreationDate
+        description: Creation date
+        data type: DATETIME
+        data description: The creation date of the post link
+        data samples: ['2010-07-21 14:47:33.0', '2010-07-23 16:30:41.0', '2010-07-26 20:12:15.0']
+
+      - name: PostId
+        description: Post ID
+        data type: INTEGER
+        data description: The post id
+        data samples: [395, 548, 375]
+
+      - name: RelatedPostId
+        description: Related Post ID
+        data type: INTEGER
+        data description: The id of the related post
+        data samples: [173, 539, 30]
+
+      - name: LinkTypeId
+        description: Link Type ID
+        data type: INTEGER
+        data description: The id of the link type
+        data samples: [1, 3]
+
+  - name: postHistory
+    description: Contains the complete revision history of posts, tracking all changes made to posts over time including edits, tag modifications, and content updates.
+    columns:
+      - name: Id
+        description: Post History ID - Primary Key
+        data type: INTEGER
+        data description: The post history id
+        data samples: [1, 2, 3]
+
+      - name: PostHistoryTypeId
+        description: Post History Type ID
+        data type: INTEGER
+        data description: The id of the post history type
+        data samples: [2, 1, 3]
+
+      - name: PostId
+        description: Post ID
+        data type: INTEGER
+        data description: The unique id of the post
+        data samples: [1, 2, 3]
+
+      - name: RevisionGUID
+        description: Revision GUID
+        data type: TEXT
+        data description: The revision globally unique id of the post
+        data samples: ['e58bf7fd-e60f-4c58-a6e4-dfc91cf98a69', '18bf9150-f1cb-432d-b7b7-26d2f8e33581', '6320bb0f-c792-4a8c-8083-89507c28d375']
+
+      - name: CreationDate
+        description: Creation date
+        data type: DATETIME
+        data description: The creation date of the post
+        data samples: ['2010-07-19 19:12:12.0', '2010-07-19 19:12:57.0', '2010-07-19 19:13:28.0']
+
+      - name: UserId
+        description: User ID
+        data type: INTEGER
+        data description: The user who post the post
+        data samples: [8, 24, 18]
+
+      - name: Text
+        description: Post text
+        data type: TEXT
+        data description: The detailed content of the post
+        data samples: ['How should I elicit prior distributions from experts when fitting a Bayesian model?', 'Eliciting priors from experts', '<bayesian><prior><elicitation>']
+
+      - name: Comment
+        description: Comment
+        data type: TEXT
+        data description: Comments of the post
+        data samples: ['', 'edited tags', 'add content from the comments;']
+
+      - name: UserDisplayName
+        description: Not useful
+        data type: TEXT
+        data description: User's display name
+        data samples: ['', 'user28', 'user209']
+
+  - name: badges
+    description: Contains information about badges earned by users, tracking achievement dates and badge types awarded for various contributions and milestones.
+    columns:
+      - name: Id
+        description: Badge ID - Primary Key
+        data type: INTEGER
+        data description: The badge id
+        data samples: [1, 2, 3]
+
+      - name: UserId
+        description: User ID
+        data type: INTEGER
+        data description: The unique id of the user
+        data samples: [5, 6, 8]
+
+      - name: Name
+        description: Badge name
+        data type: TEXT
+        data description: The badge name the user obtained
+        data samples: ['Teacher', 'Student', 'Editor']
+
+      - name: Date
+        description: Badge date
+        data type: DATETIME
+        data description: The date that the user obtained the badge
+        data samples: ['2010-07-19 19:39:07.0', '2010-07-19 19:39:08.0', '2010-07-19 19:39:09.0']
+
+  - name: posts
+    description: Contains comprehensive information about posts, including questions and answers, with details about content, ownership, activity dates, scores, view counts, and relationships between posts.
+    columns:
+      - name: Id
+        description: Post ID - Primary Key
+        data type: INTEGER
+        data description: The post id
+        data samples: [1, 2, 3]
+
+      - name: PostTypeId
+        description: Post Type ID
+        data type: INTEGER
+        data description: The id of the post type
+        data samples: [1, 2, 7]
+
+      - name: AcceptedAnswerId
+        description: Accepted Answer ID
+        data type: INTEGER
+        data description: The accepted answer id of the post
+        data samples: [15, 59, 5]
+
+      - name: CreaionDate
+        description: Creation date
+        data type: DATETIME
+        data description: The creation date of the post
+        data samples: ['2010-07-19 19:12:12.0', '2010-07-19 19:12:57.0', '2010-07-19 19:13:28.0']
+
+      - name: Score
+        description: Post score
+        data type: INTEGER
+        data description: 
+        data samples: [23, 22, 54]
+
+      - name: ViewCount
+        description: View count
+        data type: INTEGER
+        data description: The view count of the post. Higher view count means the post has higher popularity
+        data samples: [1278, 8198, 3613]
+
+      - name: Body
+        description: Post content
+        data type: TEXT
+        data description: The text content of the post
+        data samples: ['<p>How should I elicit prior distributions from experts when fitting a Bayesian model?</p>\n', '<p>In many different statistical methods there is an ""assumption of normality"".  What is ""normality"" and how do I know if there is normality?</p>\n', '<p>What are some valuable Statistical Analysis open source projects available right now?</p>\n\n<p>Edit: as pointed out by Sharpie, valuable could mean helping you get things done faster or more cheaply.</p>\n']
+
+      - name: OwnerUserId
+        description: Owner User ID
+        data type: INTEGER
+        data description: The id of the owner user
+        data samples: [8, 24, 18]
+
+      - name: LasActivityDate
+        description: Last activity date
+        data type: DATETIME
+        data description: The last activity date
+        data samples: ['2010-09-15 21:08:26.0', '2012-11-12 09:21:54.0', '2013-05-27 14:48:36.0']
+
+      - name: Title
+        description: Post title
+        data type: TEXT
+        data description: The title of the post
+        data samples: ['Eliciting priors from experts', 'What is normality?', 'What are some valuable Statistical Analysis open source projects?']
+
+      - name: Tags
+        description: Post tags
+        data type: TEXT
+        data description: The tag of the post
+        data samples: ['<bayesian><prior><elicitation>', '<distributions><normality>', '<software><open-source>']
+
+      - name: AnswerCount
+        description: Answer count
+        data type: INTEGER
+        data description: The total number of answers of the post
+        data samples: [5, 7, 19]
+
+      - name: CommentCount
+        description: Comment count
+        data type: INTEGER
+        data description: The total number of comments of the post
+        data samples: [1, 4, 2]
+
+      - name: FavoriteCount
+        description: Favorite count
+        data type: INTEGER
+        data description: The total number of favorites of the post.
+        data samples: [14, 8, 36]
+
+      - name: LastEditorUserId
+        description: Last Editor User ID
+        data type: INTEGER
+        data description: The id of the last editor
+        data samples: [None, 88, 183]
+
+      - name: LastEditDate
+        description: Last edit date
+        data type: DATETIME
+        data description: The last edit date
+        data samples: [None, '2010-08-07 17:56:44.0', '2011-02-12 05:50:03.0']
+
+      - name: CommunityOwnedDate
+        description: Community owned date
+        data type: DATETIME
+        data description: The community owned date
+        data samples: [None, '2010-07-19 19:13:28.0', '2010-07-19 19:14:43.0']
+
+      - name: ParentId
+        description: Parent Post ID
+        data type: INTEGER
+        data description: The id of the parent post. If the parent id is null, the post is the root post. Otherwise, the post is the child post of other post.
+        data samples: [None, 3, 7]
+
+      - name: ClosedDate
+        description: Closed date
+        data type: DATETIME
+        data description: The closed date of the post. If ClosedDate is null or empty, it means this post is not well-finished. If CloseDate is not null or empty, it means this post has well-finished.
+        data samples: [None, '2010-07-19 20:19:46.0', '2010-08-05 13:06:12.0']
+
+      - name: OwnerDisplayName
+        description: Not useful
+        data type: TEXT
+        data description: The display name of the post owner
+        data samples: [None, 'user28', 'user209']
+
+      - name: LastEditorDisplayName
+        description: Last editor display name
+        data type: TEXT
+        data description: The display name of the last editor
+        data samples: [None, 'user28', 'user10525']
+
+  - name: users
+    description: Contains comprehensive user information, including reputation scores, account details, profile information, activity statistics, and social data about community members.
+    columns:
+      - name: Id
+        description: User ID - Primary Key
+        data type: INTEGER
+        data description: The user id
+        data samples: [-1, 2, 3]
+
+      - name: Reputation
+        description: User reputation
+        data type: INTEGER
+        data description: The user's reputation. The user with higher reputation has more influence.
+        data samples: [1, 101, 6792]
+
+      - name: CreationDate
+        description: Account creation date
+        data type: DATETIME
+        data description: The creation date of the user account
+        data samples: ['2010-07-19 06:55:26.0', '2010-07-19 14:01:36.0', '2010-07-19 15:34:50.0']
+
+      - name: DisplayName
+        description: User display name
+        data type: TEXT
+        data description: The user's display name
+        data samples: ['Community', 'Geoff Dalgas', 'Jarrod Dixon']
+
+      - name: LastAccessDate
+        description: Last access date
+        data type: DATETIME
+        data description: The last access date of the user account
+        data samples: ['2010-07-19 06:55:26.0', '2013-11-12 22:07:23.0', '2014-08-08 06:42:58.0']
+
+      - name: WebsiteUrl
+        description: Website URL
+        data type: TEXT
+        data description: The website url of the user account
+        data samples: ['http://meta.stackexchange.com/', 'http://stackoverflow.com', 'http://minesweeperonline.com']
+
+      - name: Location
+        description: User location
+        data type: TEXT
+        data description: User's location
+        data samples: ['on the server farm', 'Corvallis, OR', 'New York, NY']
+
+      - name: AboutMe
+        description: User bio
+        data type: TEXT
+        data description: The self introduction of the user
+        data samples: ["<p>Hi, I'm not really a person.</p>\n\n<p>I'm a background process that helps keep this site clean!</p>\n\n<p>I do things like</p>\n\n<ul>\n<li>Randomly poke old unanswered questions every hour so they get some attention</li>\n<li>Own community questions and answers so nobody gets unnecessary reputation from them</li>\n<li>Own downvotes on spam/evil posts that get permanently deleted</li>\n<li>Own suggested edits from anonymous users</li>\n<li><a href=\"http://meta.stackexchange.com/a/92006\">Remove abandoned questions</a></li>\n</ul>\n", "<p>Developer on the StackOverflow team.  Find me on</p>\n\n<p><a href=\"http://www.twitter.com/SuperDalgas\" rel=\"nofollow\">Twitter</a>\n<br><br>\n<a href=\"http://blog.stackoverflow.com/2009/05/welcome-stack-overflow-valued-associate-00003/\">Stack Overflow Valued Associate #00003</a></p>\n", "<p><a href=\"http://blog.stackoverflow.com/2009/01/welcome-stack-overflow-valued-associate-00002/\">Developer on the Stack Overflow team</a>.</p>\n\n<p>Was dubbed <strong>SALTY SAILOR</strong> by Jeff Atwood, as filth and flarn would oft-times fly when dealing with a particularly nasty bug!</p>\n\n<ul>\n<li>Twitter me: <a href=\"http://twitter.com/jarrod_dixon\" rel=\"nofollow\">jarrod_dixon</a></li>\n<li>Email me: jarrod.m.dixon@gmail.com</li>\n</ul>\n"]
+
+      - name: Views
+        description: Profile views
+        data type: INTEGER
+        data description: The number of views
+        data samples: [0, 25, 22]
+
+      - name: UpVotes
+        description: Up votes
+        data type: INTEGER
+        data description: The number of upvotes
+        data samples: [5007, 3, 19]
+
+      - name: DownVotes
+        description: Down votes
+        data type: INTEGER
+        data description: The number of downvotes
+        data samples: [1920, 0, 5]
+
+      - name: AccountId
+        description: Account ID
+        data type: INTEGER
+        data description: The unique id of the account
+        data samples: [-1, 2, 3]
+
+      - name: Age
+        description: User age
+        data type: INTEGER
+        data description: User's age. Teenager (13-18), Adult (19-65), Elder (> 65)
+        data samples: [None, 37, 35]
+
+      - name: ProfileImageUrl
+        description: Profile image URL
+        data type: TEXT
+        data description: The profile image url
+        data samples: [None, 'http://i.stack.imgur.com/d1oHX.jpg', 'http://i.stack.imgur.com/km1pr.jpg']
+
+  - name: tags
+    description: Contains information about topic tags used to categorize posts, including usage statistics and associated wiki/excerpt posts.
+    columns:
+      - name: Id
+        description: Tag ID - Primary Key
+        data type: INTEGER
+        data description: The tag id
+        data samples: [1, 2, 3]
+
+      - name: TagName
+        description: Tag name
+        data type: TEXT
+        data description: The name of the tag
+        data samples: ['bayesian', 'prior', 'elicitation']
+
+      - name: Count
+        description: Tag usage count
+        data type: INTEGER
+        data description: The count of posts that contain this tag. More counts means this tag is more popular
+        data samples: [1342, 168, 6]
+
+      - name: ExcerptPostId
+        description: Excerpt Post ID
+        data type: INTEGER
+        data description: The excerpt post id of the tag
+        data samples: [20258, 62158, None]
+
+      - name: WikiPostId
+        description: Wiki Post ID
+        data type: INTEGER
+        data description: The wiki post id of the tag
+        data samples: [20257, 62157, None]
+
+  - name: votes
+    description: Contains voting activity on posts, tracking vote types, timestamps, and bounty amounts for community engagement metrics.
+    columns:
+      - name: Id
+        description: Vote ID - Primary Key
+        data type: INTEGER
+        data description: The vote id
+        data samples: [1, 2, 3]
+
+      - name: PostId
+        description: Post ID
+        data type: INTEGER
+        data description: The id of the post that is voted
+        data samples: [3, 2, 5]
+
+      - name: VoteTypeId
+        description: Vote Type ID
+        data type: INTEGER
+        data description: The id of the vote type
+        data samples: [2, 5, 3]
+
+      - name: CreationDate
+        description: Vote creation date
+        data type: DATE
+        data description: The creation date of the vote
+        data samples: ['2010-07-19', '2010-07-20', '2010-07-21']
+
+      - name: UserId
+        description: User ID
+        data type: INTEGER
+        data description: The id of the voter
+        data samples: [None, 58, 6]
+
+      - name: BountyAmount
+        description: Bounty amount
+        data type: INTEGER
+        data description: The amount of bounty
+        data samples: [None, 50, 25]
+
+  - name: comments
+    description: Contains user comments on posts
+    columns:
+      - name: Id
+        description: Comment ID - Primary Key
+        data type: INTEGER
+        data description: The comment Id
+        data samples: [1, 2, 3]
+
+      - name: PostId
+        description: Post ID
+        data type: INTEGER
+        data description: The unique id of the post
+        data samples: [3, 5, 9]
+
+      - name: Score
+        description: Comment score (0-100)
+        data type: INTEGER
+        data description: The score more than 60 refers that the comment is a positive comment.
+        data samples: [5, 0, 11]
+
+      - name: Text
+        description: Comment
+        data type: TEXT
+        data description: The detailed content of the comment
+        data samples: ["Could be a poster child fo argumentative and subjective.  At the least, need to define 'valuable'.", "Yes, R is nice- but WHY is it 'valuable'.", 'Again- why?  How would I convince my boss to use this over, say, Excel.']
+
+      - name: CreationDate
+        description: Comment creation date
+        data type: DATETIME
+        data description: The creation date of the comment
+        data samples: ['2010-07-19 19:15:52.0', '2010-07-19 19:16:14.0', '2010-07-19 19:18:54.0']
+
+      - name: UserId
+        description: User ID
+        data type: INTEGER
+        data description: The id of the user who post the comment
+        data samples: [13, 37, 5]
+
+      - name: UserDisplayName
+        description: Not useful
+        data type: TEXT
+        data description: User's display name
+        data samples: [None, 'user28', 'Statprof']
+
+relationships:
+  - name: posts_to_posts_parent
+    left table: posts
+    right table: posts
+    left column: ParentId
+    right column: Id
+
+  - name: posts_to_posts_accepted_answer
+    left table: posts
+    right table: posts
+    left column: AcceptedAnswerId
+    right column: Id
+
+  - name: users_to_posts
+    left table: users
+    right table: posts
+    left column: Id
+    right column: OwnerUserId
+
+  - name: users_to_posts_last_editor
+    left table: users
+    right table: posts
+    left column: Id
+    right column: LastEditorUserId
+
+  - name: users_to_badges
+    left table: users
+    right table: badges
+    left column: Id
+    right column: UserId
+
+  - name: users_to_comments
+    left table: users
+    right table: comments
+    left column: Id
+    right column: UserId
+
+  - name: users_to_votes
+    left table: users
+    right table: votes
+    left column: Id
+    right column: UserId
+
+  - name: users_to_postHistory
+    left table: users
+    right table: postHistory
+    left column: Id
+    right column: UserId
+
+  - name: posts_to_comments
+    left table: posts
+    right table: comments
+    left column: Id
+    right column: PostId
+
+  - name: posts_to_votes
+    left table: posts
+    right table: votes
+    left column: Id
+    right column: PostId
+
+  - name: posts_to_postHistory
+    left table: posts
+    right table: postHistory
+    left column: Id
+    right column: PostId
+
+  - name: posts_to_postLinks
+    left table: posts
+    right table: postLinks
+    left column: Id
+    right column: PostId
+
+  - name: posts_to_postLinks_related
+    left table: posts
+    right table: postLinks
+    left column: Id
+    right column: RelatedPostId
+
+  - name: tags_to_posts_excerpt
+    left table: tags
+    right table: posts
+    left column: ExcerptPostId
+    right column: Id
+
+  - name: tags_to_posts_wiki
+    left table: tags
+    right table: posts
+    left column: WikiPostId
+    right column: Id
+
+domain notes:
+
+  - Post hierarchy: Posts with null ParentId are root posts (typically questions), while posts with a ParentId value are child posts (typically answers to questions)
+
+  - Post completion status: Posts with a non-null ClosedDate are considered well-finished, while posts with null ClosedDate are not well-finished
+
+  - Tag popularity is reflected in Count - higher counts indicate more frequently used tags
+
+  - User age categories: Teenager (13-18), Adult (19-65), Elder (>65)
+
+  - When analyzing posts: Always include the `Body` column from the `posts` table
+
+  - When analyzing comments: Always include the `Text` column from the `comments` table

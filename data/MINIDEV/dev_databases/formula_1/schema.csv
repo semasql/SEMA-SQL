@@ -1,0 +1,134 @@
+The following schema from the formula_1 database outlines the table names and their respective columns. Each column is detailed in this order: column_name, is_PrimaryKey, data_type, column_description, value_description, and value_example. 
+
+
+Table: circuits
+circuitId,Primary Key,INTEGER,unique identification number of the circuit ,,"[23, 61, 29]"
+circuitRef,,TEXT,circuit reference name ,,"['sepang', 'bahrain', 'catalunya']"
+name,,TEXT,full name of circuit ,,"['Sepang International Circuit', 'Bahrain International Circuit', 'Circuit de Barcelona-Catalunya']"
+location,,TEXT,location of circuit ,,"['Kuala Lumpur', 'Sakhir', 'Montmeló']"
+country,,TEXT,country of circuit ,,"['Malaysia', 'Bahrain', 'Spain']"
+lat,,REAL,latitude of location of circuit ,,"[2.76083, 26.0325, 41.57]"
+lng,,REAL,longitude of location of circuit ,"commonsense evidence: 
+Location coordinates: (lat, lng)","[101.738, 50.5106, 2.26111]"
+alt,,INTEGER,,not useful ,[None]
+url,,TEXT,url ,,"['http://en.wikipedia.org/wiki/A1-Ring', 'http://en.wikipedia.org/wiki/AVUS', 'http://en.wikipedia.org/wiki/Adelaide_Street_Circuit']"
+
+Table: status
+statusId,Primary Key,INTEGER,the unique identification number identifying status,,"[1, 2, 3]"
+status,,TEXT,full name of status ,,"['Finished', 'Disqualified', 'Accident']"
+
+Table: drivers
+driverId,Primary Key,INTEGER,the unique identification number identifying each driver,,"[452, 625, 103]"
+driverRef,,TEXT,driver reference name ,,"['hamilton', 'heidfeld', 'rosberg']"
+number,,INTEGER,number ,,"[44, None, 6]"
+code,,TEXT,abbreviated code for drivers ,"if ""null"" or empty, it means it doesn't have code ","['HAM', 'HEI', 'ROS']"
+forename,,TEXT,forename ,,"['Lewis', 'Nick', 'Nico']"
+surname,,TEXT,surname ,,"['Hamilton', 'Heidfeld', 'Rosberg']"
+dob,,DATE,date of birth ,,"['1985-01-07', '1977-05-10', '1985-06-27']"
+nationality,,TEXT,nationality of drivers ,,"['British', 'German', 'Spanish']"
+url,,TEXT,the introduction website of the drivers ,,"['', 'http://en.wikipedia.org/wiki/%C3%89lie_Bayol', 'http://en.wikipedia.org/wiki/%C3%89ric_Bernard']"
+
+Table: driverStandings
+driverStandingsId,Primary Key,INTEGER,the unique identification number identifying driver standing records ,,"[1, 2, 3]"
+raceId,,INTEGER,id number identifying which races ,,"[18, 19, 20]"
+driverId,,INTEGER,id number identifying which drivers ,,"[1, 2, 3]"
+points,,REAL,how many points acquired in each race ,,"[10.0, 8.0, 6.0]"
+position,,INTEGER,position or track of circuits ,,"[1, 2, 3]"
+positionText,,TEXT,,"same with position, not quite useful ","['1', '2', '3']"
+wins,,INTEGER,wins ,,"[1, 0, 2]"
+
+Table: races
+raceId,Primary Key,INTEGER,the unique identification number identifying the race ,,"[837, 833, 838]"
+year,,INTEGER,year ,,"[2009, 2008, 2007]"
+round,,INTEGER,round ,,"[2, 3, 4]"
+circuitId,,INTEGER,circuit Id ,,"[2, 17, 3]"
+name,,TEXT,name of the race ,,"['Malaysian Grand Prix', 'Chinese Grand Prix', 'Bahrain Grand Prix']"
+date,,DATE,duration time ,,"['2009-04-05', '2009-04-19', '2009-04-26']"
+time,,TEXT,time of the location ,,"['09:00:00', '07:00:00', '12:00:00']"
+url,,TEXT,introduction of races ,,"['http://en.wikipedia.org/wiki/1950_Belgian_Grand_Prix', 'http://en.wikipedia.org/wiki/1950_British_Grand_Prix', 'http://en.wikipedia.org/wiki/1950_French_Grand_Prix']"
+
+Table: constructors
+constructorId,Primary Key,INTEGER,the unique identification number identifying constructors ,,"[147, 39, 54]"
+constructorRef,,TEXT,Constructor Reference name ,,"['mclaren', 'bmw_sauber', 'williams']"
+name,,TEXT,full name of the constructor ,,"['AFM', 'AGS', 'ATS']"
+nationality,,TEXT,nationality of the constructor ,,"['British', 'German', 'French']"
+url,,TEXT,the introduction website of the constructor ,"commonsense evidence: 
+How to find out the detailed introduction of the constructor: through its url","['http://en.wikipedia.org/wiki/McLaren', 'http://en.wikipedia.org/wiki/BMW_Sauber', 'http://en.wikipedia.org/wiki/Williams_Grand_Prix_Engineering']"
+
+Table: constructorResults
+constructorResultsId,Primary Key,INTEGER,constructor Results Id,,"[1, 2, 3]"
+raceId,,INTEGER,race id,,"[18, 19, 20]"
+constructorId,,INTEGER,constructor id,,"[1, 2, 3]"
+points,,REAL,points,,"[14.0, 8.0, 9.0]"
+status,,TEXT,status,,"[None, 'D']"
+
+Table: lapTimes
+raceId,Primary Key,INTEGER,the identification number identifying race,,"[2, 3, 4]"
+driverId,,INTEGER,the identification number identifying each driver ,,"[1, 2, 3]"
+lap,,INTEGER,lap number ,,"[1, 2, 3]"
+position,,INTEGER,position or track of circuits  ,,"[10, 11, 9]"
+time,,TEXT,lap time  ,in minutes / seconds / ... ,"['1:52.965', '1:41.865', '1:40.869']"
+milliseconds,,INTEGER,milliseconds ,,"[112965, 101865, 100869]"
+
+Table: qualifying
+qualifyId,Primary Key,INTEGER,the unique identification number identifying qualifying ,"How does F1 Sprint qualifying work? Sprint qualifying is essentially a short-form Grand Prix – a race that is one-third the number of laps of the main event on Sunday. However, the drivers are battling for positions on the grid for the start of Sunday's race. ","[23, 24, 25]"
+raceId,,INTEGER,the identification number identifying each race ,,"[19, 20, 21]"
+driverId,,INTEGER,the identification number identifying each driver ,,"[13, 8, 5]"
+constructorId,,INTEGER,constructor Id ,,"[6, 1, 7]"
+number,,INTEGER,number ,,"[2, 1, 23]"
+position,,INTEGER,position or track of circuit ,,"[1, 2, 3]"
+q1,,TEXT,time in qualifying 1 ,"in minutes / seconds / ... 
+commonsense evidence: 
+Q1 lap times determine pole position and the order of the front 10 positions on the grid. The slowest driver in Q1 starts 10th, the next starts ninth and so on. 
+All 20 F1 drivers participate in the first period, called Q1, with each trying to set the fastest time possible. Those in the top 15 move on to the next period of qualifying, called Q2. The five slowest drivers are eliminated and will start the race in the last five positions on the grid. ","['1:35.347', '1:35.645', '1:35.227']"
+q2,,TEXT,time in qualifying 2 ,"in minutes / seconds / ... 
+commonsense evidence: 
+only top 15 in the q1 has the record of q2 
+Q2 is slightly shorter but follows the same format. Drivers try to put down their best times to move on to Q1 as one of the 10 fastest cars. The five outside of the top 10 are eliminated and start the race from 11th to 15th based on their best lap time. ","['1:34.412', '1:34.188', '1:34.759']"
+q3,,TEXT,time in qualifying 3 ,"in minutes / seconds / ... 
+commonsense evidence: 
+only top 10 in the q2 has the record of q3 ","['1:35.748', '1:36.230', '1:36.613']"
+
+Table: pitStops
+raceId,Primary Key,INTEGER,the identification number identifying race ,,"[842, 843, 844]"
+driverId,,INTEGER,the identification number identifying each driver ,,"[1, 2, 3]"
+stop,,INTEGER,stop number ,,"[1, 2, 3]"
+lap,,INTEGER,lap number ,,"[12, 24, 37]"
+time,,TEXT,time ,exact time  ,"['16:24:40', '16:45:48', '17:08:28']"
+duration,,TEXT,duration time ,seconds/ ,"['22.552', '22.611', '25.382']"
+milliseconds,,INTEGER,milliseconds ,,"[22552, 22611, 25382]"
+
+Table: seasons
+year,Primary Key,INTEGER,the unique identification number identifying the race,,"[1950, 1951, 1952]"
+url,,TEXT,website link of season race introduction ,,"['http://en.wikipedia.org/wiki/1950_Formula_One_season', 'http://en.wikipedia.org/wiki/1951_Formula_One_season', 'http://en.wikipedia.org/wiki/1952_Formula_One_season']"
+
+Table: constructorStandings
+constructorStandingsId,Primary Key,INTEGER,unique identification of the constructor standing records ,,"[1, 2, 3]"
+raceId,,INTEGER,id number identifying which races ,,"[18, 19, 20]"
+constructorId,,INTEGER,id number identifying which id ,,"[1, 2, 3]"
+points,,REAL,how many points acquired in each race ,,"[14.0, 8.0, 9.0]"
+position,,INTEGER,position or track of circuits ,,"[1, 3, 2]"
+positionText,,TEXT,,"same with position, not quite useful ","['1', '3', '2']"
+wins,,INTEGER,wins ,,"[1, 0, 2]"
+
+Table: results
+resultId,Primary Key,INTEGER,the unique identification number identifying race result ,,"[23, 24, 25]"
+raceId,,INTEGER,the identification number identifying the race ,,"[19, 20, 21]"
+driverId,,INTEGER,the identification number identifying the driver ,,"[8, 9, 5]"
+constructorId,,INTEGER,the identification number identifying which constructors ,,"[6, 2, 1]"
+number,,INTEGER,number  ,,"[1, 4, 23]"
+grid,,INTEGER,the number identifying the area where cars are set into a grid formation in order to start the race. ,,"[2, 4, 8]"
+position,,INTEGER,The finishing position or track of circuits ,,"[1, 2, 3]"
+positionText,,TEXT,,not quite useful ,"['1', '2', '3']"
+positionOrder,,INTEGER,the finishing order of positions ,,"[1, 2, 3]"
+points,,REAL,points ,,"[10.0, 8.0, 6.0]"
+laps,,INTEGER,lap number ,,"[56, 55, 54]"
+time,,TEXT,finish time ,"commonsense evidence: 
+1. if the value exists, it means the driver finished the race. 
+2. Only the time of the champion shows in the format of ""minutes: seconds.millionsecond"", the time of the other drivers shows as ""seconds.millionsecond"" , which means their actual time is the time of the champion adding the value in this cell.","['1:31:18.555', '+19.570', '+38.450']"
+milliseconds,,INTEGER,the actual finishing time of drivers in milliseconds  ,the actual finishing time of drivers  ,"[5478555, 5498125, 5517005]"
+fastestLap,,INTEGER,fastest lap number ,,"[37, 39, 19]"
+rank,,INTEGER,starting rank positioned by fastest lap speed,,"[2, 6, 7]"
+fastestLapTime,,TEXT,fastest Lap Time,"faster (smaller in the value) ""fastestLapTime"" leads to higher rank (smaller is higher rank) ","['1:35.405', '1:35.921', '1:35.922']"
+fastestLapSpeed,,TEXT,fastest Lap Speed , (km / h) ,"['209.158', '208.033', '208.031']"
+statusId,,INTEGER,status ID ,its category description appear in the table status ,"[1, 11, 12]"

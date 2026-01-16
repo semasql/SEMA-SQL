@@ -1,0 +1,797 @@
+name: european_football_2
+description: A comprehensive database containing detailed information about European football
+
+tables:
+  - name: Team
+    description: Contains basic information about football teams
+    columns:
+      - name: id
+        description: Team ID - Primary Key
+        data type: INTEGER
+        data description: Unique id for teams
+        data samples: [31446, 1513, 31456]
+
+      - name: team_api_id
+        description: Team API ID
+        data type: INTEGER
+        data description: ID of the team in API
+        data samples: [1601, 1773, 1957]
+
+      - name: team_fifa_api_id
+        description: Team FIFA API ID
+        data type: INTEGER
+        data description: ID of the team in FIFA API
+        data samples: [673, 675, 15005]
+
+      - name: team_long_name
+        description: Team long name
+        data type: TEXT
+        data description: Team's long name
+        data samples: ['KRC Genk', 'Beerschot AC', 'SV Zulte-Waregem']
+
+      - name: team_short_name
+        description: Team short name
+        data type: TEXT
+        data description: Team's short name
+        data samples: ['GEN', 'BAC', 'ZUL']
+
+  - name: Player
+    description: Contains basic information about football players
+    columns:
+      - name: id
+        description: Player ID - Primary Key
+        data type: INTEGER
+        data description: Unique id for players
+        data samples: [3879, 401, 9179]
+
+      - name: player_api_id
+        description: Player API ID
+        data type: INTEGER
+        data description: ID of the player in API
+        data samples: [2625, 2752, 2768]
+
+      - name: player_name
+        description: Player name
+        data type: TEXT
+        data description: Player name
+        data samples: ['Aaron Appindangoye', 'Aaron Cresswell', 'Aaron Doran']
+
+      - name: player_fifa_api_id
+        description: Player FIFA API ID
+        data type: INTEGER
+        data description: ID of the player in FIFA API
+        data samples: [2, 6, 11]
+
+      - name: birthday
+        description: Birthday
+        data type: TEXT
+        data description: Player's birthday
+        data samples: ['1992-02-29 00:00:00', '1989-12-15 00:00:00', '1991-05-13 00:00:00']
+
+      - name: height
+        description: Height
+        data type: INTEGER
+        data description: Player's height in cm
+        data samples: [182, 170, 172]
+
+      - name: weight
+        description: Weight
+        data type: INTEGER
+        data description: Player's weight in pounds
+        data samples: [187, 146, 163]
+
+  - name: Match
+    description: Contains comprehensive match data
+    columns:
+      - name: id
+        description: Match ID - Primary Key
+        data type: INTEGER
+        data description: Unique id for matches
+        data samples: [4769, 4770, 4771]
+
+      - name: country_id
+        description: Country ID
+        data type: INTEGER
+        data description: Country ID
+        data samples: [1, 1729, 4769]
+
+      - name: league_id
+        description: League ID
+        data type: INTEGER
+        data description: League ID
+        data samples: [1, 1729, 4769]
+
+      - name: season
+        description: Season
+        data type: TEXT
+        data description: Season of the match
+        data samples: ['2008/2009', '2009/2010', '2010/2011']
+
+      - name: stage
+        description: Stage
+        data type: INTEGER
+        data description: Stage of the match
+        data samples: [1, 10, 11]
+
+      - name: date
+        description: Match date
+        data type: TEXT
+        data description: Date of the match
+        data samples: ['2008-08-17 00:00:00', '2008-08-16 00:00:00', '2008-09-24 00:00:00']
+
+      - name: match_api_id
+        description: Match API ID
+        data type: INTEGER
+        data description: ID of the match in API
+        data samples: [483129, 483130, 483131]
+
+      - name: home_team_api_id
+        description: Home team API ID
+        data type: INTEGER
+        data description: ID of the home team in API
+        data samples: [9987, 10000, 9984]
+
+      - name: away_team_api_id
+        description: Away team API ID
+        data type: INTEGER
+        data description: ID of the away team in API
+        data samples: [9993, 9994, 8635]
+
+      - name: home_team_goal
+        description: Home team goals
+        data type: INTEGER
+        data description: Goals scored by home team
+        data samples: [1, 0, 5]
+
+      - name: away_team_goal
+        description: Away team goals
+        data type: INTEGER
+        data description: Goals scored by away team
+        data samples: [1, 0, 3]
+
+      - name: home_player_X1, home_player_X2, home_player_X3, home_player_X4, home_player_X5,home_player_X6, home_player_X7, home_player_X8, home_player_X9, home_player_X10, home_player_X11
+        description: Home player X coordinates
+        data type: INTEGER
+        data description: X coordinate positions for home team players 1-11 on the field
+        data samples: [None, 1, 2, 4, 6, 8]
+
+      - name: away_player_X1 to away_player_X11
+        description: Away player X coordinates
+        data type: INTEGER
+        data description: X coordinate positions for away team players 1-11 on the field
+        data samples: [None, 1, 2, 4, 6, 8]
+
+      - name: home_player_Y1 to home_player_Y11
+        description: Home player Y coordinates
+        data type: INTEGER
+        data description: Y coordinate positions for home team players 1-11 on the field
+        data samples: [None, 1, 3, 5, 7, 10, 11]
+
+      - name: away_player_Y1 to away_player_Y11
+        description: Away player Y coordinates
+        data type: INTEGER
+        data description: Y coordinate positions for away team players 1-11 on the field
+        data samples: [None, 1, 3, 5, 7, 10, 11]
+
+      - name: home_player_1 to home_player_11
+        description: Home player IDs
+        data type: INTEGER
+        data description: Player API IDs for home team players 1-11
+        data samples: [None, 39890, 38327, 67950, 39580]
+
+      - name: away_player_1 to away_player_11
+        description: Away player IDs
+        data type: INTEGER
+        data description: Player API IDs for away team players 1-11
+        data samples: [None, 34480, 37937, 38388, 38293]
+
+      - name: goal
+        description: Goal events
+        data type: TEXT
+        data description: XML data containing goal events in the match
+        data samples: [None, '<goal>...</goal>']
+
+      - name: shoton
+        description: Shots on target
+        data type: TEXT
+        data description: XML data containing shot on goal events. A shot on goal enters the goal or would have entered if not blocked by goalkeeper/defender
+        data samples: [None, '<shoton>...</shoton>']
+
+      - name: shotoff
+        description: Shots off target
+        data type: TEXT
+        data description: XML data containing shot off goal events (opposite of shot on target)
+        data samples: [None, '<shotoff>...</shotoff>']
+
+      - name: foulcommit
+        description: Fouls committed
+        data type: TEXT
+        data description: XML data containing fouls occurred in the match
+        data samples: [None, '<foulcommit>...</foulcommit>']
+
+      - name: card
+        description: Cards given
+        data type: TEXT
+        data description: XML data containing cards (yellow/red) given in the match
+        data samples: [None, '<card>...</card>']
+
+      - name: cross
+        description: Crosses
+        data type: TEXT
+        data description: XML data containing balls sent into opposition area from wide positions
+        data samples: [None, '<cross>...</cross>']
+
+      - name: corner
+        description: Corner kicks
+        data type: TEXT
+        data description: XML data containing corner kick events when ball goes out of play
+        data samples: [None, '<corner>...</corner>']
+
+      - name: possession
+        description: Possession
+        data type: TEXT
+        data description: XML data containing possession duration for each team
+        data samples: [None, '<possession>...</possession>']
+
+      - name: B365H, B365D, B365A
+        description: Bet365 odds
+        data type: REAL
+        data description: Bet365 betting odds for Home win (H), Draw (D), Away win (A)
+        data samples: [1.73, 3.4, 5.0]
+
+      - name: BWH, BWD, BWA
+        description: Bet&Win odds
+        data type: REAL
+        data description: Bet&Win betting odds for Home win (H), Draw (D), Away win (A)
+        data samples: [1.75, 3.35, 4.2]
+
+      - name: IWH, IWD, IWA
+        description: Interwetten odds
+        data type: REAL
+        data description: Interwetten betting odds for Home win (H), Draw (D), Away win (A)
+        data samples: [1.85, 3.2, 3.5]
+
+      - name: LBH, LBD, LBA
+        description: Ladbrokes odds
+        data type: REAL
+        data description: Ladbrokes betting odds for Home win (H), Draw (D), Away win (A)
+        data samples: [1.8, 3.3, 3.75]
+
+      - name: PSH, PSD, PSA
+        description: Pinnacle odds
+        data type: REAL
+        data description: Pinnacle betting odds for Home win (H), Draw (D), Away win (A)
+        data samples: [None, 5.1, 1.76]
+
+      - name: WHH, WHD, WHA
+        description: William Hill odds
+        data type: REAL
+        data description: William Hill betting odds for Home win (H), Draw (D), Away win (A)
+        data samples: [1.7, 3.3, 4.33]
+
+      - name: SJH, SJD, SJA
+        description: Stan James odds
+        data type: REAL
+        data description: Stan James betting odds for Home win (H), Draw (D), Away win (A)
+        data samples: [1.9, 3.3, 4.0]
+
+      - name: VCH, VCD, VCA
+        description: VC Bet odds
+        data type: REAL
+        data description: VC Bet betting odds for Home win (H), Draw (D), Away win (A)
+        data samples: [1.65, 3.4, 4.5]
+
+      - name: GBH, GBD, GBA
+        description: Gamebookers odds
+        data type: REAL
+        data description: Gamebookers betting odds for Home win (H), Draw (D), Away win (A)
+        data samples: [1.78, 3.25, 4.0]
+
+      - name: BSH, BSD, BSA
+        description: Bet&Win (Blue Square) odds
+        data type: REAL
+        data description: Bet&Win (Blue Square) betting odds for Home win (H), Draw (D), Away win (A)
+        data samples: [1.73, 3.4, 4.2]
+
+  - name: League
+    description: Contains information about football leagues and their associated countries.
+    columns:
+      - name: id
+        description: League ID - Primary Key
+        data type: INTEGER
+        data description: Unique id for leagues
+        data samples: [1, 1729, 4769]
+
+      - name: country_id
+        description: Country ID
+        data type: INTEGER
+        data description: Unique id for countries
+        data samples: [1, 1729, 4769]
+
+      - name: name
+        description: League name
+        data type: TEXT
+        data description: League name
+        data samples: ['Belgium Jupiler League', 'England Premier League', 'France Ligue 1']
+
+  - name: Country
+    description: Contains information about countries where football leagues are located.
+    columns:
+      - name: id
+        description: Country ID - Primary Key
+        data type: INTEGER
+        data description: Unique id for countries
+        data samples: [1, 1729, 4769]
+
+      - name: name
+        description: Country name
+        data type: TEXT
+        data description: Country name
+        data samples: ['Belgium', 'England', 'France']
+
+  - name: Player_Attributes
+    description: Contains detailed performance attributes and statistics for players as rated by FIFA
+    columns:
+      - name: id
+        description: Player Attributes ID - Primary Key
+        data type: INTEGER
+        data description: Unique id for player attributes records
+        data samples: [1, 2, 3]
+
+      - name: player_fifa_api_id
+        description: Player FIFA API ID
+        data type: INTEGER
+        data description: ID of the player in FIFA API
+        data samples: [218353, 189615, 186170]
+
+      - name: player_api_id
+        description: Player API ID
+        data type: INTEGER
+        data description: ID of the player in API
+        data samples: [505942, 155782, 162549]
+
+      - name: date
+        description: Date
+        data type: TEXT
+        data description: Date of attributes record
+        data samples: ['2016-02-18 00:00:00', '2015-11-19 00:00:00', '2015-09-21 00:00:00']
+
+      - name: overall_rating
+        description: Overall rating
+        data type: INTEGER
+        data description: Overall rating of the player (0-100) calculated by FIFA. 
+        data samples: [67, 62, 61]
+
+      - name: potential
+        description: Potential
+        data type: INTEGER
+        data description: Potential score (0-100) calculated by FIFA. Higher score means more potential
+        data samples: [71, 66, 65]
+
+      - name: preferred_foot
+        description: Preferred foot
+        data type: TEXT
+        data description: Player's preferred foot when attacking (right/left)
+        data samples: ['right', 'left', None]
+
+      - name: attacking_work_rate
+        description: Attacking work rate
+        data type: TEXT
+        data description: Player's attacking work rate. High (joins all attacks), Medium (selective), Low (stays in position)
+        data samples: ['medium', 'high', None]
+
+      - name: defensive_work_rate
+        description: Defensive work rate
+        data type: TEXT
+        data description: Player's defensive work rate. High (stays in position to defend), Medium (selective), Low (joins attacks instead)
+        data samples: ['medium', 'high', 'low']
+
+      - name: crossing
+        description: Crossing
+        data type: INTEGER
+        data description: Crossing score (0-100). Measures tendency/frequency of crosses into box
+        data samples: [49, 48, 80]
+
+      - name: finishing
+        description: Finishing
+        data type: INTEGER
+        data description: Finishing rate (0-100) calculated by FIFA
+        data samples: [44, 43, 53]
+
+      - name: heading_accuracy
+        description: Heading accuracy
+        data type: INTEGER
+        data description: Heading accuracy (0-100) calculated by FIFA
+        data samples: [71, 70, 58]
+
+      - name: short_passing
+        description: Short passing
+        data type: INTEGER
+        data description: Short passing score (0-100) calculated by FIFA
+        data samples: [61, 60, 71]
+
+      - name: volleys
+        description: Volleys
+        data type: INTEGER
+        data description: Volley score (0-100) calculated by FIFA
+        data samples: [44, 43, 40]
+
+      - name: dribbling
+        description: Dribbling
+        data type: INTEGER
+        data description: Dribbling score (0-100) calculated by FIFA
+        data samples: [51, 50, 73]
+
+      - name: curve
+        description: Curve
+        data type: INTEGER
+        data description: Curve score (0-100) calculated by FIFA
+        data samples: [45, 44, 70]
+
+      - name: free_kick_accuracy
+        description: Free kick accuracy
+        data type: INTEGER
+        data description: Free kick accuracy (0-100) calculated by FIFA
+        data samples: [39, 38, 69]
+
+      - name: long_passing
+        description: Long passing
+        data type: INTEGER
+        data description: Long passing score (0-100) calculated by FIFA
+        data samples: [64, 63, 68]
+
+      - name: ball_control
+        description: Ball control
+        data type: INTEGER
+        data description: Ball control score (0-100) calculated by FIFA
+        data samples: [49, 48, 71]
+
+      - name: acceleration
+        description: Acceleration
+        data type: INTEGER
+        data description: Acceleration score (0-100) calculated by FIFA
+        data samples: [60, 79, 80]
+
+      - name: sprint_speed
+        description: Sprint speed
+        data type: INTEGER
+        data description: Sprint speed (0-100) calculated by FIFA
+        data samples: [64, 78, 82]
+
+      - name: agility
+        description: Agility
+        data type: INTEGER
+        data description: Agility (0-100) calculated by FIFA
+        data samples: [59, 78, 79]
+
+      - name: reactions
+        description: Reactions
+        data type: INTEGER
+        data description: Reactions score (0-100) calculated by FIFA
+        data samples: [47, 46, 67]
+
+      - name: balance
+        description: Balance
+        data type: INTEGER
+        data description: Balance score (0-100) calculated by FIFA
+        data samples: [65, 90, 87]
+
+      - name: shot_power
+        description: Shot power
+        data type: INTEGER
+        data description: Shot power (0-100) calculated by FIFA
+        data samples: [55, 54, 71]
+
+      - name: jumping
+        description: Jumping
+        data type: INTEGER
+        data description: Jumping score (0-100) calculated by FIFA
+        data samples: [58, 85, 84]
+
+      - name: stamina
+        description: Stamina
+        data type: INTEGER
+        data description: Stamina score (0-100) calculated by FIFA
+        data samples: [54, 79, 80]
+
+      - name: strength
+        description: Strength
+        data type: INTEGER
+        data description: Strength score (0-100) calculated by FIFA
+        data samples: [76, 56, 50]
+
+      - name: long_shots
+        description: Long shots
+        data type: INTEGER
+        data description: Long shots score (0-100) calculated by FIFA
+        data samples: [35, 34, 62]
+
+      - name: aggression
+        description: Aggression
+        data type: INTEGER
+        data description: Aggression score (0-100) calculated by FIFA
+        data samples: [71, 63, 62]
+
+      - name: interceptions
+        description: Interceptions
+        data type: INTEGER
+        data description: Interceptions score (0-100) calculated by FIFA
+        data samples: [70, 41, 40]
+
+      - name: positioning
+        description: Positioning
+        data type: INTEGER
+        data description: Positioning score (0-100) calculated by FIFA
+        data samples: [45, 44, 60]
+
+      - name: vision
+        description: Vision
+        data type: INTEGER
+        data description: Vision score (0-100) calculated by FIFA
+        data samples: [54, 53, 66]
+
+      - name: penalties
+        description: Penalties
+        data type: INTEGER
+        data description: Penalties score (0-100) calculated by FIFA
+        data samples: [48, 47, 59]
+
+      - name: marking
+        description: Marking
+        data type: INTEGER
+        data description: Marking score (0-100) calculated by FIFA
+        data samples: [65, 62, 76]
+
+      - name: standing_tackle
+        description: Standing tackle
+        data type: INTEGER
+        data description: Standing tackle score (0-100) calculated by FIFA
+        data samples: [69, 66, 63]
+
+      - name: sliding_tackle
+        description: Sliding tackle
+        data type: INTEGER
+        data description: Sliding tackle score (0-100) calculated by FIFA
+        data samples: [69, 66, 78]
+
+      - name: gk_diving
+        description: Goalkeeper diving
+        data type: INTEGER
+        data description: Goalkeeper diving score (0-100) calculated by FIFA
+        data samples: [6, 5, 14]
+
+      - name: gk_handling
+        description: Goalkeeper handling
+        data type: INTEGER
+        data description: Goalkeeper handling score (0-100) calculated by FIFA
+        data samples: [11, 10, 7]
+
+      - name: gk_kicking
+        description: Goalkeeper kicking
+        data type: INTEGER
+        data description: Goalkeeper kicking score (0-100) calculated by FIFA
+        data samples: [10, 9, 8]
+
+      - name: gk_positioning
+        description: Goalkeeper positioning
+        data type: INTEGER
+        data description: Goalkeeper positioning score (0-100) calculated by FIFA
+        data samples: [8, 7, 9]
+
+      - name: gk_reflexes
+        description: Goalkeeper reflexes
+        data type: INTEGER
+        data description: Goalkeeper reflexes score (0-100) calculated by FIFA
+        data samples: [8, 7, 12]
+
+  - name: Team_Attributes
+    description: Contains detailed tactical attributes and playing style characteristics for teams
+    columns:
+      - name: id
+        description: Team Attributes ID - Primary Key
+        data type: INTEGER
+        data description: Unique id for team attributes records
+        data samples: [1, 2, 3]
+
+      - name: team_fifa_api_id
+        description: Team FIFA API ID
+        data type: INTEGER
+        data description: ID of the team in FIFA API
+        data samples: [434, 77, 614]
+
+      - name: team_api_id
+        description: Team API ID
+        data type: INTEGER
+        data description: ID of the team in API
+        data samples: [9930, 8485, 8576]
+
+      - name: date
+        description: Date
+        data type: TEXT
+        data description: Date of the attributes record
+        data samples: ['2010-02-22 00:00:00', '2014-09-19 00:00:00', '2015-09-10 00:00:00']
+
+      - name: buildUpPlaySpeed
+        description: Build-up play speed
+        data type: INTEGER
+        data description: Speed in which attacks are put together (1-100). Higher score indicates faster attack speed
+        data samples: [60, 52, 47]
+
+      - name: buildUpPlaySpeedClass
+        description: Build-up play speed class
+        data type: TEXT
+        data description: Speed classification. Slow (1-33), Balanced (34-66), Fast (67-100)
+        data samples: ['Balanced', 'Fast', 'Slow']
+
+      - name: buildUpPlayDribbling
+        description: Build-up play dribbling tendency
+        data type: INTEGER
+        data description: Tendency/frequency of dribbling (1-100)
+        data samples: [None, 48, 41]
+
+      - name: buildUpPlayDribblingClass
+        description: Build-up play dribbling class
+        data type: TEXT
+        data description: Dribbling classification. Little (1-33), Normal (34-66), Lots (67-100)
+        data samples: ['Little', 'Normal', 'Lots']
+
+      - name: buildUpPlayPassing
+        description: Build-up play passing
+        data type: INTEGER
+        data description: Affects passing distance and support from teammates (1-100)
+        data samples: [50, 56, 54]
+
+      - name: buildUpPlayPassingClass
+        description: Build-up play passing class
+        data type: TEXT
+        data description: Passing classification. Short (1-33), Mixed (34-66), Long (67-100)
+        data samples: ['Mixed', 'Long', 'Short']
+
+      - name: buildUpPlayPositioningClass
+        description: Build-up play positioning class
+        data type: TEXT
+        data description: Team's freedom of movement in the first two thirds of the pitch. Organised or Free Form
+        data samples: ['Organised', 'Free Form']
+
+      - name: chanceCreationPassing
+        description: Chance creation passing
+        data type: INTEGER
+        data description: Amount of risk in pass decision and run support (1-100)
+        data samples: [60, 54, 70]
+
+      - name: chanceCreationPassingClass
+        description: Chance creation passing class
+        data type: TEXT
+        data description: Passing risk classification. Safe (1-33), Normal (34-66), Risky (67-100)
+        data samples: ['Normal', 'Risky', 'Safe']
+
+      - name: chanceCreationCrossing
+        description: Chance creation crossing
+        data type: INTEGER
+        data description: Tendency/frequency of crosses into the box (1-100)
+        data samples: [65, 63, 70]
+
+      - name: chanceCreationCrossingClass
+        description: Chance creation crossing class
+        data type: TEXT
+        data description: Crossing classification. Little (1-33), Normal (34-66), Lots (67-100)
+        data samples: ['Normal', 'Lots', 'Little']
+
+      - name: chanceCreationShooting
+        description: Chance creation shooting
+        data type: INTEGER
+        data description: Tendency/frequency of shots taken (1-100)
+        data samples: [55, 64, 70]
+
+      - name: chanceCreationShootingClass
+        description: Chance creation shooting class
+        data type: TEXT
+        data description: Shooting classification. Little (1-33), Normal (34-66), Lots (67-100)
+        data samples: ['Normal', 'Lots', 'Little']
+
+      - name: chanceCreationPositioningClass
+        description: Chance creation positioning class
+        data type: TEXT
+        data description: Team's freedom of movement in the final third of the pitch. Organised or Free Form
+        data samples: ['Organised', 'Free Form']
+
+      - name: defencePressure
+        description: Defence pressure
+        data type: INTEGER
+        data description: How high up the pitch the team will start pressuring (1-100)
+        data samples: [50, 47, 60]
+
+      - name: defencePressureClass
+        description: Defence pressure class
+        data type: TEXT
+        data description: Pressure classification. Deep (1-33), Medium (34-66), High (67-100)
+        data samples: ['Medium', 'Deep', 'High']
+
+      - name: defenceAggression
+        description: Defence aggression
+        data type: INTEGER
+        data description: Team's approach to tackling the ball possessor (1-100)
+        data samples: [55, 44, 70]
+
+      - name: defenceAggressionClass
+        description: Defence aggression class
+        data type: TEXT
+        data description: Aggression classification. Contain (1-33), Press (34-66), Double (67-100)
+        data samples: ['Press', 'Double', 'Contain']
+
+      - name: defenceTeamWidth
+        description: Defence team width
+        data type: INTEGER
+        data description: How much the team will shift to the ball side (1-100)
+        data samples: [45, 54, 70]
+
+      - name: defenceTeamWidthClass
+        description: Defence team width class
+        data type: TEXT
+        data description: Width classification. Narrow (1-33), Normal (34-66), Wide (67-100)
+        data samples: ['Normal', 'Wide', 'Narrow']
+
+      - name: defenceDefenderLineClass
+        description: Defence defender line class
+        data type: TEXT
+        data description: Shape and strategy of the defence. Cover or Offside Trap
+        data samples: ['Cover', 'Offside Trap']
+
+relationships:
+  - name: Country_to_League
+    left table: Country
+    right table: League
+    left column: id
+    right column: country_id
+
+  - name: League_to_Match
+    left table: League
+    right table: Match
+    left column: id
+    right column: league_id
+
+  - name: Country_to_Match
+    left table: Country
+    right table: Match
+    left column: id
+    right column: country_id
+
+  - name: Team_to_Match_home
+    left table: Team
+    right table: Match
+    left column: team_api_id
+    right column: home_team_api_id
+
+  - name: Team_to_Match_away
+    left table: Team
+    right table: Match
+    left column: team_api_id
+    right column: away_team_api_id
+
+  - name: Team_to_Team_Attributes
+    left table: Team
+    right table: Team_Attributes
+    left column: team_api_id
+    right column: team_api_id
+
+  - name: Player_to_Player_Attributes
+    left table: Player
+    right table: Player_Attributes
+    left column: player_api_id
+    right column: player_api_id
+
+  - name: Player_to_Match_home
+    left table: Player
+    right table: Match
+    left column: player_api_id
+    right column: home_player_1 through home_player_11
+
+  - name: Player_to_Match_away
+    left table: Player
+    right table: Match
+    left column: player_api_id
+    right column: away_player_1 through away_player_11
+
+domain notes:
+
+  - Goalkeeper attributes (gk_diving, gk_handling, gk_kicking, gk_positioning, gk_reflexes) are only relevant for goalkeeper players

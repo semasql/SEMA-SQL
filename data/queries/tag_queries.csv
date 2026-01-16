@@ -1,0 +1,83 @@
+﻿Query ID,DB used,Query,answer
+0,california_schools,"Among the schools with the average score in Math over 560 in the SAT test, how many schools are in the bay area?",71
+1,california_schools,What is the telephone number for the school with the lowest average score in reading in Southern California?,(562) 944-0033
+3,california_schools,How many test takers are there at the school/s in a county with population over 2 million?,244742
+4,california_schools,What is the grade span offered in the school with the highest longitude in cities that are part of the 'Silicon Valley' region?,K-5
+5,california_schools,What are the two most common first names among the female school administrators?,"['Jennifer', 'Lisa']"
+6,codebase_community,"Among the posts owned by csgillespie, how many of them are root posts and mention academic papers?",4
+8,codebase_community,How many of the comments with a score of 17 are about statistics?,4
+10,codebase_community,"Of the posts with views above 80000, how many discuss the R programming language in the post body?",3
+11,formula_1,Please give the names of the races held on the circuits in the middle east region without north africa.,"['Bahrain Grand Prix', 'Turkish Grand Prix', 'Abu Dhabi Grand Prix', 'Azerbaijan Grand Prix', 'European Grand Prix']"
+13,formula_1,How many Asian drivers competed in the 2008 Malaysian Grand Prix?,2
+16,european_football_2,What is the preferred foot when attacking of the player with the most Ballon d'Or awards of all time?,left
+18,european_football_2,List the football player with a birthyear of 1970 who is an Aquarius.,Hans Vonk
+19,european_football_2,Please list the league from the country which is landlocked.,Switzerland Super League
+20,european_football_2,How many matches in the 2008/2009 season were held in countries where French is an official language?,866
+21,european_football_2,"Of the top three away teams that scored the most goals, which one has the most fans?",FC Barcelona
+24,debit_card_specializing,Which year recorded the most gas use paid in the highest value currency?,2013
+108,codebase_community,"Among the posts that were voted by user 1465, determine if each post content is related to machine learning. Respond with Yes if it is and No if it is not.","[""YES"", ""YES"", ""YES""]"
+109,codebase_community,Extract the statistical term from the post titles which were owned by Vebjorn Ljosa.,"[""beta-binomial distribution"", ""AdaBoost"", ""SVM"", ""Kolmogorov-Smirnov statistic""]"
+110,codebase_community,List the Comment Ids of the positive comments made by the top 5 newest users who commented on the post with the title 'Analysing wind data with R'.,[11449]
+111,codebase_community,"For the post from which the tag ""bayesian"" is excerpted from, identify whether the body of the post is True or False. Answer with True or False ONLY.",TRUE
+25,debit_card_specializing,"What is the average price of the transactions taken place in gas stations in the country which is historically known as Bohemia, to the nearest integer?",453
+27,codebase_community,List the username of the oldest user who located in the capital city of Austria and obtained the Supporter badge?,ymihere
+29,debit_card_specializing,"What is the difference in gas consumption between customers who pay using the currency of the Czech Republic and who pay the currency of European Union in 2012, to the nearest integer?",402524570
+30,debit_card_specializing,Is it true that more SMEs pay in Czech koruna than in the second-largest reserved currency in the world?,Yes
+33,california_schools,"What is the total number of schools whose total SAT scores are greater or equal to 1500 whose mailing city is the county seat of Lake County, California?",2
+35,formula_1,How many drivers born after the end of Vietnam War have been ranked 2?,27
+36,formula_1,"Among all European Grand Prix races, what is the percentage of the races were hosted in the country where the Bundesliga happens, to the nearest whole number?",52
+37,european_football_2,"From 2010 to 2015, what was the average overall rating, rounded to the nearest integer, of players who are higher than 170 and shorter than Michael Jordan?",69
+38,formula_1,"Among the drivers that finished the race in the 2008 Malaysian Grand Prix, how many debuted earlier than Lewis Hamilton?",3
+39,european_football_2,How many players were born after(not include) the year of the 14th FIFA World Cup?,3028
+40,european_football_2,"Among the players whose height is over 180, how many of them have a volley score of over 70 and are taller than President Bill Clinton?",88
+41,california_schools,How many schools have more than 0.1 of their K-12 students eligible for free meals and with average SAT scores that are exceed or equal to 300 points below the new official total score for the SAT?,1
+42,california_schools,How many schools have the difference in enrollements between K-12 and ages 5-17 as more than the number of days in April?,1236
+43,codebase_community,"Among the users who have more than 100 upvotes, how many of them are older than the median age in America?",32
+44,european_football_2,Please list the player names taller than 6 foot 8?,"[""Kristof van Hout""]"
+45,european_football_2,How many players whose first names are Adam and weigh more than 77.1kg?,24
+46,european_football_2,Please provide the names of top three football players in alphabetical order who are over 5 foot 11 tall.,"[""Aaron Appindangoye"", ""Aaron Galindo"", ""Aaron Hughes""]"
+47,debit_card_specializing,How many transactions taken place in the gas station in the Czech Republic are with a price of over 45 US dollars?,56
+48,formula_1,"Which of these circuits is located closer to a capital city, Silverstone Circuit, Hockenheimring or Hungaroring?",Hungaroring
+49,formula_1,Which race was Alex Yoong in when he finished in a position earlier than or equal to top half of the official number of drivers in a typical formula 1 race?,Australian Grand Prix
+50,california_schools,"Among the magnet schools with SAT test takers of over 500, which school name sounds most futuristic?",Polytechnic High
+51,codebase_community,"Of the 5 posts with highest popularity, list their titles in order of most technical to least technical.","How to interpret and report eta squared / partial eta squared in statistically significant and non-significant analyses?, How to interpret F- and p-value in ANOVA?, What is the meaning of p values and t values in statistical tests?, How to choose between Pearson and Spearman correlation?, How do I get the number of rows of a data.frame in R?"
+52,codebase_community,What are the Post Ids of the top 2 posts in order of most sarcastic comments received on 9-14-2014.,"[115372, 115254]"
+53,codebase_community,"For the post owned by csgillespie with the highest popularity, what is the most sarcastic comment?","""That pirates / global warming chart is clearly cooked up by conspiracy theorists - anyone can see they have deliberately plotted even spacing for unequal time periods to avoid showing the recent sharp increase in temperature as pirates are almost entirely wiped out.
+
+We all know that as temperatures rise it makes the rum evaporate and pirates cannot survive those conditions."""
+54,codebase_community,"Among the top 10 most popular tags, which is the least related to statistics?",self-study
+55,codebase_community,"Of the top 10 most favorited posts, what is the Id of the most lighthearted post?",423
+56,codebase_community,"Among the posts owned by a user over 65 with a score of over 10, what are the post id's of the top 2 posts made with the least expertise?","[8485, 15670]"
+57,codebase_community,"Among the badges obtained by csgillespie in 2011, which is the most creatively named?",Strunk & White
+58,codebase_community,"Of the posts owned by Yevgeny, what are the id's of the top 3 most pessimistic?","[23819, 24216, 35748]"
+59,european_football_2,"Of the top 10 players taller than 180 ordered by average heading accuracy, what are the top 3 most unique sounding names?","[""Naldo"", ""Per Mertesacker"", ""Didier Drogba""]"
+60,codebase_community,"Out of users that have obtained at least 200 badges, what are the top 2 display names that seem most based off a real name?","[""Jeromy Anglim"", ""Glen_b""]"
+106,codebase_community,"Of the top 5 users with the most views, who has their social media linked in their AboutMe section? Answer with user name.",whuber
+107,codebase_community,"Of all the comments commented by the user with a username of Harvey Motulsky and with a score of 5, rank the post ids in order of most helpful to least helpful.","[89457, 64710, 4945]"
+61,california_schools,Of the cities containing exclusively virtual schools which are the top 3 safest places to live?,"[""Thousand Oaks"", ""Simi Valley"", ""Westlake Village""]"
+62,california_schools,"List the cities containing the top 5 most Enrollment (K-12) schools, and rank them in order from most diverse to least diverse.","[""Long Beach"", ""Paramount"", ""Granada Hills"", ""Temecula"", ""Carmichael""]"
+63,california_schools,Please list the top three continuation schools with the lowest eligible free rates for students aged 5-17 and rank them based on the overall affordability of their respective cities.,"[""Del Amigo High (Continuation)"", ""Rancho del Mar High (Continuation)"", ""Millennium High Alternative""]"
+64,california_schools,"Of the schools with the top 3 SAT excellence rate, order their counties by academic reputation from strongest to weakest.",Santa Clara County
+65,california_schools,"Among the cities with the top 10 lowest enrollment for students in grades 1 through 12, which are the top 2 most popular cities to visit?","[""Death Valley"", ""Shaver Lake""]"
+952,formula_1,"Of the constructors that have won a race in 2014, which has the most prestige?",Ferrari
+1000,formula_1,"Of the 5 racetracks that hosted the most recent races, rank the locations by distance to the equator.","[""Mexico City"", ""Sao Paulo"", ""Abu Dhabi"", ""Austin"", ""Suzuka""]"
+81,california_schools,Summarize the qualities of the schools with an average score in Math under 600 in the SAT test and are exclusively virtual.,
+82,california_schools,"""Summarize the qualities of the schools in Riverside which the average math score for SAT is greater than 400.""",
+85,codebase_community,Summarize common characteristics of the titles of the posts owned by the user csgillespie.,
+86,codebase_community,What qualities are represented by the badges obtained by csgillespie?,
+87,codebase_community,"What is the average sentiment of the posts owned by the user csgillespie, Positive or Negative?",
+88,codebase_community,Summarize qualities of the comments made by user 'A Lion'.,
+89,codebase_community,Summarize the comments made on the post titled 'How does gentle boosting differ from AdaBoost?' to answer the original question,
+90,codebase_community,Summarize the issues described in the comments on Neil McGuigan's posts.,
+91,codebase_community,Summarize the comments added to the post with the highest score.,
+92,formula_1,Summarize the track characteristics of the circuits in Germany.,
+93,formula_1,Summarize the track characteristics of the circuits in Spain.,
+94,formula_1,Provide information about the races held on Sepang International Circuit.,
+95,formula_1,Summarize the qualities of all the drivers who finished the game in race No. 872.,
+96,formula_1,"Summarize the track characteristiscs of the circuits in Lisbon, Portugal.",
+97,formula_1,Summarize the track characteristics of the US circuits.,
+99,formula_1,Summarize information about the French constructors that have a lap number of over 50.,
+100,formula_1,Summarize the track characteristics of the circuits in Italy.,
+101,european_football_2,Summarize attributes of the players with an overall rating of over 88 from 2008 to 2010?,
+102,european_football_2,Identify common characteristics of the players whose volley score and dribbling score are over 87.,
+103,european_football_2,Summarize attributes of the 10 heaviest players.,
