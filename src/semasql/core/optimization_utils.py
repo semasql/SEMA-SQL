@@ -9,6 +9,14 @@ from pathlib import Path
 
 from pandas.core.arrays import boolean
 
+# Import symbolic verification (optional - will handle ImportError gracefully)
+try:
+    from .symbolic_verification import symbolic_verify
+    SYMBOLIC_VERIFICATION_AVAILABLE = True
+except ImportError:
+    SYMBOLIC_VERIFICATION_AVAILABLE = False
+    symbolic_verify = None
+
 class PlanNode:
     """
     Structure of a node in the query plan.
@@ -255,24 +263,41 @@ def reorder_udf_nodes_in_tree(root: PlanNode, cost_model: Optional[CostModel] = 
     return root
 
 
-def should_swap(udf_node: PlanNode, downstream_node: PlanNode, cost_model: Optional[CostModel] = None) -> bool:
+def should_swap(udf_node: PlanNode, downstream_node: PlanNode, cost_model: Optional[CostModel] = None, verify: bool = True) -> bool:
     """
     Determines if a UDF node should be swapped with its downstream consumer.
-    Uses both semantic rules and cost-based optimization.
+    Uses semantic rules, symbolic verification, and cost-based optimization.
     
     Args:
         udf_node: The UDF node to potentially swap
         downstream_node: The downstream node to swap with
         cost_model: Optional cost model for cost-based decisions. If None, uses rule-based only.
+        verify: If True, perform symbolic verification after rule-based checks pass.
     
     Returns:
         True if swap should be performed, False otherwise
     """
-    # First check semantic equivalence rules (must pass)
+    # Step 1: Fast rule-based rejection (must pass)
     if not _check_semantic_swap_rules(udf_node, downstream_node):
         return False
     
-    # If cost model is provided, use cost-based decision
+    # Step 2: Symbolic verification (safety net for cases that pass rules)
+    if verify:
+        if not SYMBOLIC_VERIFICATION_AVAILABLE:
+            # Z3 not available - skip verification
+            print("Symbolic verification: SKIPPED (z3-solver not available)")
+        else:
+            try:
+                is_equivalent = symbolic_verify(udf_node, downstream_node)
+                if not is_equivalent:
+                    # Rules said OK, but symbolic check failed - reject swap
+                    return False
+            except Exception as e:
+                # On any error, conservatively reject the swap
+                print(f"Symbolic verification: EXCEPTION - {e}")
+                return False
+    
+    # Step 3: Cost-based decision (if cost model provided)
     if cost_model is not None:
         return _should_swap_cost_based(udf_node, downstream_node, cost_model)
     

@@ -4,3 +4,4 @@ dashscope>=1.22.1
 openai>=1.65.5 
 chromadb>=0.5.23
 PyYAML>=6.0
+z3-solver>=4.12.0
